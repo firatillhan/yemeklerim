@@ -12,16 +12,16 @@
         <!--Giriş Yap-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Yemeklerim" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GirisYapVC" customModule="Yemeklerim" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yemeklerim" translatesAutoresizingMaskIntoConstraints="NO" id="4HQ-ds-RjY">
-                                <rect key="frame" x="103.5" y="69" width="207" height="206"/>
+                                <rect key="frame" x="103.5" y="117" width="207" height="206"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kullanıcı adınızı giriniz:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZS-A3-wKA">
-                                <rect key="frame" x="20" y="325" width="374" height="40"/>
+                                <rect key="frame" x="20" y="373" width="374" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zIy-Z3-o2p"/>
@@ -30,7 +30,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şifreniz:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKw-mD-k5K">
-                                <rect key="frame" x="20" y="385" width="374" height="25"/>
+                                <rect key="frame" x="20" y="433" width="374" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="fhW-zN-caB"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="xmV-1m-biO"/>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Şifrenizi giriniz:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JMg-en-hxl">
-                                <rect key="frame" x="20" y="415" width="374" height="40"/>
+                                <rect key="frame" x="20" y="463" width="374" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5jU-lO-3cF"/>
@@ -50,15 +50,18 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A16-W7-A5O">
-                                <rect key="frame" x="20" y="485" width="374" height="50"/>
+                                <rect key="frame" x="20" y="533" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jXt-Bc-Cjy"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Giriş Yap"/>
+                                <connections>
+                                    <action selector="girisYapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojy-Rm-MgY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL2-H9-hAk">
-                                <rect key="frame" x="20" y="545" width="374" height="40"/>
+                                <rect key="frame" x="20" y="593" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xJx-Ua-VCE"/>
                                 </constraints>
@@ -69,7 +72,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kullanıcı Adı:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjE-g5-9o2">
-                                <rect key="frame" x="20" y="295" width="374" height="25"/>
+                                <rect key="frame" x="20" y="343" width="374" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="AjO-RJ-UtJ"/>
                                 </constraints>
@@ -108,6 +111,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Giriş Yap" id="IVh-YR-fEn"/>
                     <connections>
+                        <outlet property="userNameLabel" destination="bZS-A3-wKA" id="xxf-5j-xup"/>
+                        <outlet property="userPasswordLabel" destination="JMg-en-hxl" id="f7l-Nm-vE4"/>
                         <segue destination="PT4-gM-9GM" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="S4Z-JT-e18"/>
                     </connections>
                 </viewController>
@@ -124,10 +129,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yemeklerim" translatesAutoresizingMaskIntoConstraints="NO" id="Lzr-id-eRp">
-                                <rect key="frame" x="103.5" y="69" width="207" height="213"/>
+                                <rect key="frame" x="103.5" y="117" width="207" height="192.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kullanıcı Adı:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMW-Mp-M3V">
-                                <rect key="frame" x="20" y="302" width="374" height="25"/>
+                                <rect key="frame" x="20" y="329.5" width="374" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="3pf-K2-NLH"/>
                                 </constraints>
@@ -136,7 +141,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxH-Uy-wtv">
-                                <rect key="frame" x="20" y="332" width="374" height="40"/>
+                                <rect key="frame" x="20" y="359.5" width="374" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Wrs-0e-ezv"/>
@@ -145,7 +150,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Adresi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ho-11-4RM">
-                                <rect key="frame" x="20" y="382" width="374" height="25"/>
+                                <rect key="frame" x="20" y="409.5" width="374" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="9qD-0i-ljV"/>
                                 </constraints>
@@ -154,7 +159,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1bn-GF-JXv">
-                                <rect key="frame" x="20" y="412" width="374" height="40"/>
+                                <rect key="frame" x="20" y="439.5" width="374" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EjP-vP-mWH"/>
@@ -163,7 +168,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şifre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fE6-GR-8DU">
-                                <rect key="frame" x="20" y="462" width="374" height="25"/>
+                                <rect key="frame" x="20" y="489.5" width="374" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Yx3-V6-8Th"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="h54-lc-eld"/>
@@ -173,7 +178,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6mo-Ac-FD8">
-                                <rect key="frame" x="20" y="492" width="374" height="40"/>
+                                <rect key="frame" x="20" y="519.5" width="374" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WdU-ms-dNu"/>
@@ -183,7 +188,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şifre Tekrar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CL-rc-u54">
-                                <rect key="frame" x="20" y="542" width="374" height="25"/>
+                                <rect key="frame" x="20" y="569.5" width="374" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="x6b-dh-zA2"/>
                                     <constraint firstAttribute="height" constant="25" id="yEK-wT-LhY"/>
@@ -193,7 +198,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAK-g9-Ipz">
-                                <rect key="frame" x="20" y="572" width="374" height="40"/>
+                                <rect key="frame" x="20" y="599.5" width="374" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TYS-Wp-5qY"/>
@@ -202,7 +207,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEJ-aH-Uz9">
-                                <rect key="frame" x="20" y="642" width="374" height="50"/>
+                                <rect key="frame" x="20" y="669.5" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="o2S-Df-IuY"/>
                                 </constraints>
@@ -257,22 +262,22 @@
             <objects>
                 <viewController id="5kt-bb-Ssb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t0T-eO-uda">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="flm-6c-atp">
-                                <rect key="frame" x="0.0" y="56" width="414" height="791"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="803"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="d7Z-Pa-GqE">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="49"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="49.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d7Z-Pa-GqE" id="K8k-zj-fto">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSL-aM-WGD">
-                                                    <rect key="frame" x="40" y="11" width="334" height="27"/>
+                                                    <rect key="frame" x="40" y="11" width="334" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -313,11 +318,11 @@
             <objects>
                 <viewController id="2SA-oP-JzB" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aad-6a-oFU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tarif detay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-3K-Sbw">
-                                <rect key="frame" x="168.5" y="432.5" width="77.5" height="21"/>
+                                <rect key="frame" x="168.5" y="437.5" width="77.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -341,11 +346,11 @@
             <objects>
                 <viewController id="Fnk-z8-AFv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3pJ-AD-jTc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tarif yükleme sayfası" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihV-xA-CEQ">
-                                <rect key="frame" x="129.5" y="432.5" width="155.5" height="21"/>
+                                <rect key="frame" x="129.5" y="437.5" width="155.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -372,11 +377,11 @@
             <objects>
                 <viewController id="o0n-KS-UGm" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y8u-pB-2TF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anasayfa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0S-ar-0mA">
-                                <rect key="frame" x="173" y="432.5" width="68" height="21"/>
+                                <rect key="frame" x="173" y="437.5" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -403,11 +408,11 @@
             <objects>
                 <viewController id="ZnZ-MH-RtW" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5to-Ij-LfM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="profil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITC-Hj-Iy1">
-                                <rect key="frame" x="187.5" y="432.5" width="39" height="21"/>
+                                <rect key="frame" x="187.5" y="437.5" width="39" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -476,7 +481,7 @@
                     <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" id="vst-LI-nzU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MV8-WS-Mu7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -495,7 +500,7 @@
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="HnQ-dm-U1Y"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="P8T-w4-YHE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -514,7 +519,7 @@
                     <tabBarItem key="tabBarItem" title="" image="rectangle.and.pencil.and.ellipsis" catalog="system" id="vuf-rM-dMm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="V9z-0F-deH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -533,7 +538,7 @@
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="Chi-ks-JLV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zBH-fc-hf7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -547,7 +552,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0cZ-Iz-d8I"/>
+        <segue reference="S4Z-JT-e18"/>
         <segue reference="ETR-lc-eUw"/>
     </inferredMetricsTieBreakers>
     <resources>
