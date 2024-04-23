@@ -252,7 +252,7 @@
             </objects>
             <point key="canvasLocation" x="2333" y="-27"/>
         </scene>
-        <!--View Controller-->
+        <!--Tarif Defterim-->
         <scene sceneID="Mjo-mM-b03">
             <objects>
                 <viewController id="5kt-bb-Ssb" sceneMemberID="viewController">
@@ -260,21 +260,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="favoriler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKM-PK-ouP">
-                                <rect key="frame" x="176.5" y="432.5" width="61.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="flm-6c-atp">
+                                <rect key="frame" x="0.0" y="56" width="414" height="791"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="d7Z-Pa-GqE">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="49"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d7Z-Pa-GqE" id="K8k-zj-fto">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSL-aM-WGD">
+                                                    <rect key="frame" x="40" y="11" width="334" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gSL-aM-WGD" firstAttribute="centerX" secondItem="K8k-zj-fto" secondAttribute="centerX" id="60J-F6-gBh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gSL-aM-WGD" secondAttribute="bottom" id="Cmc-V5-Hhc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gSL-aM-WGD" secondAttribute="trailing" constant="20" id="DsO-zi-T03"/>
+                                                <constraint firstItem="gSL-aM-WGD" firstAttribute="top" secondItem="K8k-zj-fto" secondAttribute="topMargin" id="OcX-m6-bkr"/>
+                                                <constraint firstItem="gSL-aM-WGD" firstAttribute="leading" secondItem="K8k-zj-fto" secondAttribute="leadingMargin" constant="20" id="ykG-e0-LCG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bV6-Ub-tdF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RKM-PK-ouP" firstAttribute="centerY" secondItem="t0T-eO-uda" secondAttribute="centerY" id="Ixg-ey-Xz7"/>
-                            <constraint firstItem="RKM-PK-ouP" firstAttribute="centerX" secondItem="t0T-eO-uda" secondAttribute="centerX" id="NPz-fS-Phw"/>
+                            <constraint firstItem="bV6-Ub-tdF" firstAttribute="bottom" secondItem="flm-6c-atp" secondAttribute="bottom" id="0nx-Rs-TAH"/>
+                            <constraint firstItem="bV6-Ub-tdF" firstAttribute="trailing" secondItem="flm-6c-atp" secondAttribute="trailing" id="AEw-VJ-G1f"/>
+                            <constraint firstItem="flm-6c-atp" firstAttribute="top" secondItem="bV6-Ub-tdF" secondAttribute="top" id="FyO-eT-xIM"/>
+                            <constraint firstItem="flm-6c-atp" firstAttribute="leading" secondItem="bV6-Ub-tdF" secondAttribute="leading" id="znT-LV-RuV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="VCy-sl-TkR"/>
+                    <navigationItem key="navigationItem" title="Tarif Defterim" id="VCy-sl-TkR"/>
                     <connections>
                         <segue destination="2SA-oP-JzB" kind="show" identifier="favoriToDetay" id="ETR-lc-eUw"/>
                     </connections>
