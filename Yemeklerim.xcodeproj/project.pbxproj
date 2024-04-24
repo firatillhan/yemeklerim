@@ -24,6 +24,7 @@
 		3A0961892BD8E59E000BE82A /* Yemekler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961882BD8E59E000BE82A /* Yemekler.swift */; };
 		3A09618B2BD8E5C3000BE82A /* FavoriYemekler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618A2BD8E5C3000BE82A /* FavoriYemekler.swift */; };
 		3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618C2BD8E65B000BE82A /* Alert.swift */; };
+		3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		3A0961882BD8E59E000BE82A /* Yemekler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yemekler.swift; sourceTree = "<group>"; };
 		3A09618A2BD8E5C3000BE82A /* FavoriYemekler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriYemekler.swift; sourceTree = "<group>"; };
 		3A09618C2BD8E65B000BE82A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnasayfaCollectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				3A0961882BD8E59E000BE82A /* Yemekler.swift */,
 				3A09618C2BD8E65B000BE82A /* Alert.swift */,
 				3A09618A2BD8E5C3000BE82A /* FavoriYemekler.swift */,
+				3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */,
 			);
 			path = Yemeklerim;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				3A09617D2BD8DF9A000BE82A /* TarifDetayVC.swift in Sources */,
 				3A0961752BD8DE2C000BE82A /* AnasayfaVC.swift in Sources */,
 				3A0961792BD8DF29000BE82A /* TarifYukleVC.swift in Sources */,
+				3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */,
 				3A0961732BD8DDEF000BE82A /* KayitOlVC.swift in Sources */,
 				3A09618B2BD8E5C3000BE82A /* FavoriYemekler.swift in Sources */,
 				3A0961632BD846F6000BE82A /* GirisYapVC.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 
 
-class Kategoriler {
+class Kategoriler:Codable {
     var kategoriId:String?
         var kategoriAd:String?
         init() {

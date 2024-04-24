@@ -8,7 +8,8 @@
 import UIKit
 
 class TarifDetayVC: UIViewController {
-
+    
+    var yemek:Yemekler?
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -21,14 +21,13 @@ class Yemekler:Codable{
     var yemekMalzemeler:String?
     
 
-    var favoriYemek:FavoriYemekler?
-    //var kategori:Kategoriler?
-    var kullanicilar:Kullanicilar?
+    var kategori:Kategoriler?
+    var kullanici:Kullanicilar?
 
     init(){
         
     }
-    init(yemekId:String,yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String) {
+    init(yemekId:String,yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:Kategoriler,kullanici:Kullanicilar) {
         self.yemekId = yemekId
         self.yemekAd = yemekAd
         self.yemekKisiSayisi = yemekKisiSayisi
@@ -38,5 +37,7 @@ class Yemekler:Codable{
         self.yemekResim = yemekResim
         self.yemekPisirmeSuresi = yemekPisirmeSuresi
         self.yemekMalzemeler = yemekMalzemeler
+        self.kategori = kategori
+        self.kullanici = kullanici
     }
 }

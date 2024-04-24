@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -339,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2W-Ja-gDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="467" y="2924"/>
+            <point key="canvasLocation" x="467" y="3017"/>
         </scene>
         <!--Tarif YukleVC-->
         <scene sceneID="7gb-8A-vdq">
@@ -380,28 +381,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anasayfa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0S-ar-0mA">
-                                <rect key="frame" x="173" y="437.5" width="68" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GpE-x0-ooa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="o0n-KS-UGm" id="h3C-DD-h5f"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m0J-fZ-nYa">
+                                <rect key="frame" x="0.0" y="100" width="414" height="747"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0NM-TO-gVP">
+                                    <size key="itemSize" width="311" height="248"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnasayfaCell" id="iDp-yj-aKx" customClass="AnasayfaCollectionVC" customModule="Yemeklerim" customModuleProvider="target">
+                                        <rect key="frame" x="51.5" y="0.0" width="311" height="248"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ovM-6X-0rj">
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="248"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="y_logo" translatesAutoresizingMaskIntoConstraints="NO" id="QPM-Ge-8vy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="311" height="173.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kullanıcı Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txL-2A-0OZ">
+                                                    <rect key="frame" x="10" y="183.5" width="291" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yemek Adı" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKw-84-KA6">
+                                                    <rect key="frame" x="10" y="214.5" width="291" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="txL-2A-0OZ" firstAttribute="top" secondItem="QPM-Ge-8vy" secondAttribute="bottom" constant="10" id="0ti-ee-1wz"/>
+                                                <constraint firstItem="ZKw-84-KA6" firstAttribute="leading" secondItem="ovM-6X-0rj" secondAttribute="leading" constant="10" id="4lZ-eI-iwW"/>
+                                                <constraint firstItem="ZKw-84-KA6" firstAttribute="top" secondItem="txL-2A-0OZ" secondAttribute="bottom" constant="10" id="7Yz-pJ-uwp"/>
+                                                <constraint firstAttribute="trailing" secondItem="txL-2A-0OZ" secondAttribute="trailing" constant="10" id="Ojh-F9-VEa"/>
+                                                <constraint firstItem="QPM-Ge-8vy" firstAttribute="width" secondItem="ovM-6X-0rj" secondAttribute="width" id="Yvi-Mh-hcq"/>
+                                                <constraint firstAttribute="trailing" secondItem="QPM-Ge-8vy" secondAttribute="trailing" id="ZAh-Ya-LsE"/>
+                                                <constraint firstItem="txL-2A-0OZ" firstAttribute="leading" secondItem="ovM-6X-0rj" secondAttribute="leading" constant="10" id="bee-xg-44q"/>
+                                                <constraint firstItem="QPM-Ge-8vy" firstAttribute="top" secondItem="ovM-6X-0rj" secondAttribute="top" id="vpU-eC-crX"/>
+                                                <constraint firstItem="QPM-Ge-8vy" firstAttribute="height" secondItem="ovM-6X-0rj" secondAttribute="height" multiplier="0.7" id="w1v-0t-Aam"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZKw-84-KA6" secondAttribute="trailing" constant="10" id="yNW-rV-YkZ"/>
+                                                <constraint firstItem="QPM-Ge-8vy" firstAttribute="leading" secondItem="ovM-6X-0rj" secondAttribute="leading" id="yQC-gS-Xcc"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="311" height="248"/>
+                                        <connections>
+                                            <outlet property="kullaniciAd" destination="txL-2A-0OZ" id="RUa-GM-8Yh"/>
+                                            <outlet property="yemekAd" destination="ZKw-84-KA6" id="sHx-Bu-4cQ"/>
+                                            <outlet property="yemekResim" destination="QPM-Ge-8vy" id="pDk-kl-Ipl"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FmJ-mz-UFj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="J0S-ar-0mA" firstAttribute="centerX" secondItem="Y8u-pB-2TF" secondAttribute="centerX" id="TX2-YZ-4hc"/>
-                            <constraint firstItem="J0S-ar-0mA" firstAttribute="centerY" secondItem="Y8u-pB-2TF" secondAttribute="centerY" id="kRB-wO-N71"/>
+                            <constraint firstItem="m0J-fZ-nYa" firstAttribute="leading" secondItem="FmJ-mz-UFj" secondAttribute="leading" id="KhP-lg-lab"/>
+                            <constraint firstItem="m0J-fZ-nYa" firstAttribute="top" secondItem="GpE-x0-ooa" secondAttribute="bottom" id="N7S-1T-0Z4"/>
+                            <constraint firstItem="FmJ-mz-UFj" firstAttribute="trailing" secondItem="m0J-fZ-nYa" secondAttribute="trailing" id="dJc-b6-xMQ"/>
+                            <constraint firstItem="GpE-x0-ooa" firstAttribute="leading" secondItem="FmJ-mz-UFj" secondAttribute="leading" id="dOp-in-LDI"/>
+                            <constraint firstItem="GpE-x0-ooa" firstAttribute="trailing" secondItem="FmJ-mz-UFj" secondAttribute="trailing" id="ew2-X8-JNO"/>
+                            <constraint firstItem="GpE-x0-ooa" firstAttribute="top" secondItem="FmJ-mz-UFj" secondAttribute="top" id="j1K-Uk-r4C"/>
+                            <constraint firstItem="FmJ-mz-UFj" firstAttribute="bottom" secondItem="m0J-fZ-nYa" secondAttribute="bottom" id="jc8-qI-2Cd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qop-7Z-tiA"/>
                     <connections>
+                        <outlet property="collectionView" destination="m0J-fZ-nYa" id="9X4-C6-cGe"/>
+                        <outlet property="searchBar" destination="GpE-x0-ooa" id="aln-qm-jJm"/>
                         <segue destination="2SA-oP-JzB" kind="show" identifier="homeToDetay" id="Hx2-CX-1Sz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hbt-6f-JQT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="467" y="2219"/>
+            <point key="canvasLocation" x="466.66666666666669" y="2218.5267857142858"/>
         </scene>
         <!--ProfilVC-->
         <scene sceneID="jdJ-1H-Hg5">
@@ -553,13 +618,14 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="S4Z-JT-e18"/>
-        <segue reference="ETR-lc-eUw"/>
+        <segue reference="Hx2-CX-1Sz"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="rectangle.and.pencil.and.ellipsis" catalog="system" width="128" height="86"/>
+        <image name="y_logo" width="480" height="482"/>
         <image name="yemeklerim" width="480" height="482"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
