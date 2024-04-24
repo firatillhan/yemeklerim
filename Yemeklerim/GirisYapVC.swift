@@ -18,6 +18,7 @@ class GirisYapVC: UIViewController {
 
 
     @IBAction func girisYapButton(_ sender: Any) {
+        performSegue(withIdentifier: "tabBar", sender: nil)
     }
 }
 
