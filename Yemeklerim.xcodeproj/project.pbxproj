@@ -25,6 +25,7 @@
 		3A09618B2BD8E5C3000BE82A /* FavoriYemekler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618A2BD8E5C3000BE82A /* FavoriYemekler.swift */; };
 		3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618C2BD8E65B000BE82A /* Alert.swift */; };
 		3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */; };
+		3A0961912BD93F74000BE82A /* TarifDefteriTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		3A09618A2BD8E5C3000BE82A /* FavoriYemekler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriYemekler.swift; sourceTree = "<group>"; };
 		3A09618C2BD8E65B000BE82A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnasayfaCollectionVC.swift; sourceTree = "<group>"; };
+		3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifDefteriTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				3A09618C2BD8E65B000BE82A /* Alert.swift */,
 				3A09618A2BD8E5C3000BE82A /* FavoriYemekler.swift */,
 				3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */,
+				3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */,
 			);
 			path = Yemeklerim;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				3A0961852BD8E548000BE82A /* Kullanicilar.swift in Sources */,
 				3A0961892BD8E59E000BE82A /* Yemekler.swift in Sources */,
 				3A09617B2BD8DF6E000BE82A /* ProfilVC.swift in Sources */,
+				3A0961912BD93F74000BE82A /* TarifDefteriTableVC.swift in Sources */,
 				3A0961612BD846F6000BE82A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

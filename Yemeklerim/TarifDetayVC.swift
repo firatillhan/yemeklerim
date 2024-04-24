@@ -10,6 +10,7 @@ import UIKit
 class TarifDetayVC: UIViewController {
     
     var yemek:Yemekler?
+    var favori:FavoriYemekler?
     override func viewDidLoad() {
         super.viewDidLoad()
 

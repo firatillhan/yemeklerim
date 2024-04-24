@@ -12,15 +12,15 @@ class FavoriYemekler:Codable {
     var favoriYemekId:String?
     
     var yemek:Yemekler?
-    var kullanici:Kullanicilar?
+   
     
     init() {
         
     }
-    init (favoriYemekId:String,yemek:Yemekler,kullanici:Kullanicilar){
+    init (favoriYemekId:String,yemek:Yemekler){
         self.favoriYemekId = favoriYemekId
         self.yemek = yemek
-        self.kullanici = kullanici
+        
         
         
     }
