@@ -8,16 +8,20 @@
 import Foundation
 
 class FavoriYemekler:Codable {
+   
     var favoriYemekId:String?
-    var yemekId:String?
-    var users:String?
+    
+    var yemek:Yemekler?
+    var kullanici:Kullanicilar?
+    
     init() {
         
     }
-    init (favoriYemekId:String,yemekId:String,users:String){
+    init (favoriYemekId:String,yemek:Yemekler,kullanici:Kullanicilar){
         self.favoriYemekId = favoriYemekId
-        self.yemekId = yemekId
-        self.users = users
+        self.yemek = yemek
+        self.kullanici = kullanici
+        
         
     }
 }
