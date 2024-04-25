@@ -8,7 +8,17 @@
 import UIKit
 
 class TarifYukleVC: UIViewController {
-
+    
+    @IBOutlet weak var yemekAd: UITextField!
+    @IBOutlet weak var yemekAciklama: UITextField!
+    @IBOutlet weak var yemekKisiSayisi: UIPickerView!    //picker!
+    @IBOutlet weak var yemekResim: UIImageView!
+    @IBOutlet weak var yemekHazirlikSuresi: UITextField!
+    @IBOutlet weak var yemekPisirmeSuresi: UITextField!
+    @IBOutlet weak var yemekMalzemeler: UITextField!
+    @IBOutlet weak var KategoriId: UIPickerView!   //picker!
+    @IBOutlet weak var yemekTarif: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,14 +26,9 @@ class TarifYukleVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+    @IBAction func tarifYukleButton(_ sender: Any) {
+        
     }
-    */
-
 }

@@ -10,15 +10,15 @@ import Foundation
 
 class Yemekler:Codable{
     
-    var yemekId:String?
-    var yemekAd:String?
-    var yemekKisiSayisi:String?
-    var yemekAciklama:String?
-    var yemekHazirlikSuresi:String?
+    var yemekId:String? //
+    var yemekAd:String? //
+    var yemekKisiSayisi:String? //
+    var yemekAciklama:String? //
+    var yemekHazirlikSuresi:String? //
     var yemekTarif:String?
-    var yemekResim:String?
-    var yemekPisirmeSuresi:String?
-    var yemekMalzemeler:String?
+    var yemekResim:String? //
+    var yemekPisirmeSuresi:String? //
+    var yemekMalzemeler:String? //
     
 
     var kategori:Kategoriler?
