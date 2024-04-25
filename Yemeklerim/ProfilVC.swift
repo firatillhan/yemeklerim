@@ -16,7 +16,7 @@ class ProfilVC: UIViewController {
         
     }
     
-//Profil sayfasıdır
+// git diff ve git status farkı
     
 
 }
