@@ -13,10 +13,10 @@ class ProfilVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationItem.title = "Profil sayfası"
+        
     }
     
-
+//Profil sayfasıdır
     
 
 }
