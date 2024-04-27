@@ -40,8 +40,13 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
 
         toolbar.setItems([iptalButton,boslukButton,tamamButton], animated: true)
         kategoriSec.inputAccessoryView = toolbar
+        let gestureRecognizerKlavye = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+                view.addGestureRecognizer(gestureRecognizerKlavye)
         
     }
+    @objc func hideKeyboard() {
+               view.endEditing(true)
+       }
     @objc func tamamTikla(){
         view.endEditing(true)
     }
@@ -74,4 +79,6 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         kategoriSec.text = kategorilerim[row]
     }
 }
+
+
 

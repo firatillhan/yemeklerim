@@ -14,7 +14,7 @@ class TarifDefteriVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
@@ -31,6 +31,7 @@ class TarifDefteriVC: UIViewController {
         favoriTarifListesi.append(favori5)
         favoriTarifListesi.append(favori6)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let indeks = sender as? Int
             let gidilecekVC = segue.destination as! TarifDetayVC
@@ -54,6 +55,8 @@ extension TarifDefteriVC: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "favoriToDetay", sender: indexPath.row)
+        print("Favori detay tıklandı")
+
 
     }
     

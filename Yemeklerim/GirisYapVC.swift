@@ -14,7 +14,12 @@ class GirisYapVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let gestureRecognizerKlavye = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+                view.addGestureRecognizer(gestureRecognizerKlavye)
     }
+    @objc func hideKeyboard() {
+               view.endEditing(true)
+       }
 
 
     @IBAction func girisYapButton(_ sender: Any) {

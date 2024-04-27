@@ -30,7 +30,12 @@ class AnasayfaVC: UIViewController {
         
         let yemek7 = Yemekler(yemekId: "7", yemekAd: "Bulgur Pilavı", yemekKisiSayisi: "2-4 kişilik", yemekAciklama: "bulgur pilavı açıklaması", yemekHazirlikSuresi: "10 dakika", yemekTarif: "bulgur pilavı tarifi", yemekResim: "bulgurPilavi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "bulgur pilavı malzemeler", kategori: Kategoriler(kategoriId: "3", kategoriAd: "Pilav ve Makarnalar"), kullanici: Kullanicilar(kullaniciAd: "firat", sifre: "123456", email: "firatilhan008@gmail.com"))
         let yemek8 = Yemekler(yemekId: "8", yemekAd: "Peynir eritmesi", yemekKisiSayisi: "2-4 kişilik", yemekAciklama: "Artvin usulü peynir eritmesi açıklaması", yemekHazirlikSuresi: "5 dakika", yemekTarif: "peynir eritmesi tarifi", yemekResim: "peynirEritmesi", yemekPisirmeSuresi: "5 dakika", yemekMalzemeler: "peynir eritmesi malzemeler", kategori: Kategoriler(kategoriId: "3", kategoriAd: "Kahvaltılıklar"), kullanici: Kullanicilar(kullaniciAd: "firat", sifre: "123456", email: "firatilhan008@gmail.com"))
+        let yemek9 = Yemekler(yemekId: "9", yemekAd: "Mercimek Çorbası", yemekKisiSayisi: "2-4 kişilik", yemekAciklama: "mercimek çorbası açıklaması", yemekHazirlikSuresi: "10 dakika", yemekTarif: "mercimek çorbası tarifi", yemekResim: "çorba", yemekPisirmeSuresi: "30 dakika", yemekMalzemeler: "mercimek çorbası malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciAd: "firat", sifre: "123456", email: "firatilhan008@gmail.com"))
+        let yemek10 = Yemekler(yemekId: "2", yemekAd: "Tavuk Sote", yemekKisiSayisi: "2-4 kişilik", yemekAciklama: "Tavuk sote açıklaması", yemekHazirlikSuresi: "20 dakika", yemekTarif: "tavuk sote tarifi", yemekResim: "tavukSote", yemekPisirmeSuresi: "30 dakika", yemekMalzemeler: "tavuk sote malzemeler", kategori: Kategoriler(kategoriId: "2", kategoriAd: "Ana Yemekler"), kullanici: Kullanicilar(kullaniciAd: "firat", sifre: "123456", email: "firatilhan008@gmail.com"))
         
+        let yemek11 = Yemekler(yemekId: "3", yemekAd: "Bulgur Pilavı", yemekKisiSayisi: "2-4 kişilik", yemekAciklama: "bulgur pilavı açıklaması", yemekHazirlikSuresi: "10 dakika", yemekTarif: "bulgur pilavı tarifi", yemekResim: "bulgurPilavi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "bulgur pilavı malzemeler", kategori: Kategoriler(kategoriId: "3", kategoriAd: "Pilav ve Makarnalar"), kullanici: Kullanicilar(kullaniciAd: "firat", sifre: "123456", email: "firatilhan008@gmail.com"))
+        let yemek12 = Yemekler(yemekId: "4", yemekAd: "Peynir eritmesi", yemekKisiSayisi: "2-4 kişilik", yemekAciklama: "Artvin usulü peynir eritmesi açıklaması", yemekHazirlikSuresi: "5 dakika", yemekTarif: "peynir eritmesi tarifi", yemekResim: "peynirEritmesi", yemekPisirmeSuresi: "5 dakika", yemekMalzemeler: "peynir eritmesi malzemeler", kategori: Kategoriler(kategoriId: "3", kategoriAd: "Kahvaltılıklar"), kullanici: Kullanicilar(kullaniciAd: "firat", sifre: "123456", email: "firatilhan008@gmail.com"))
+       
       
         
         yemekListesi.append(yemek1)
@@ -41,12 +46,18 @@ class AnasayfaVC: UIViewController {
         yemekListesi.append(yemek6)
         yemekListesi.append(yemek7)
         yemekListesi.append(yemek8)
+        yemekListesi.append(yemek9)
+        yemekListesi.append(yemek10)
+        yemekListesi.append(yemek11)
+        yemekListesi.append(yemek12)
 
         
         collectionView.delegate = self
         collectionView.dataSource = self
+
         
     }
+
     func yemeklerCVTasarim() {
            
         let tasarim :UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -94,6 +105,7 @@ extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "homeToDetay", sender: indexPath.row)
+        print("Tıklandı")
     }
     
     

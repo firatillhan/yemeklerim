@@ -13,7 +13,12 @@ class KayitOlVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let gestureRecognizerKlavye = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+                view.addGestureRecognizer(gestureRecognizerKlavye)
     }
+    @objc func hideKeyboard() {
+               view.endEditing(true)
+       }
     
 
     /*
