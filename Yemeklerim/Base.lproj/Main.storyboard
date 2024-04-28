@@ -271,14 +271,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoriCell" id="d7Z-Pa-GqE" customClass="TarifDefteriTableVC" customModule="Yemeklerim" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d7Z-Pa-GqE" id="K8k-zj-fto">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSL-aM-WGD">
-                                                    <rect key="frame" x="40" y="11" width="334" height="28"/>
+                                                    <rect key="frame" x="40" y="11" width="334" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -361,6 +361,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="Deftere Ekle"/>
+                                                <connections>
+                                                    <action selector="deftereEkleButton:" destination="2SA-oP-JzB" eventType="touchUpInside" id="gmR-GX-FFR"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yemek Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCt-72-zMe">
                                                 <rect key="frame" x="10" y="300" width="394" height="25"/>
@@ -437,7 +440,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmP-k1-2AV">
-                                                <rect key="frame" x="10" y="830.5" width="394" height="439.5"/>
+                                                <rect key="frame" x="0.0" y="820.5" width="414" height="459.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Malzemeler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hv0-Of-tAV">
@@ -455,10 +458,11 @@
                                             <constraint firstItem="Bor-lF-OiB" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" constant="10" id="13W-wT-QL0"/>
                                             <constraint firstItem="0sQ-aw-121" firstAttribute="leading" secondItem="pCc-ZK-HRJ" secondAttribute="trailing" constant="10" id="1yt-eu-en1"/>
                                             <constraint firstItem="okO-i6-hEh" firstAttribute="top" secondItem="92S-Ta-qtw" secondAttribute="top" id="2J0-Rb-dAl"/>
-                                            <constraint firstItem="pmP-k1-2AV" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" constant="10" id="6Pg-Ao-T7R"/>
+                                            <constraint firstAttribute="trailing" secondItem="pmP-k1-2AV" secondAttribute="trailing" id="4iU-vg-zV8"/>
                                             <constraint firstItem="okO-i6-hEh" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" id="6gW-lV-Hpv"/>
                                             <constraint firstItem="Hv0-Of-tAV" firstAttribute="top" secondItem="FzC-63-Qcr" secondAttribute="bottom" constant="10" id="6n2-ou-aHF"/>
                                             <constraint firstAttribute="trailing" secondItem="FzC-63-Qcr" secondAttribute="trailing" constant="10" id="743-0p-x5W"/>
+                                            <constraint firstItem="pmP-k1-2AV" firstAttribute="top" secondItem="fHI-SD-8dE" secondAttribute="bottom" id="8Qy-DT-W7B"/>
                                             <constraint firstItem="fHI-SD-8dE" firstAttribute="top" secondItem="Bor-lF-OiB" secondAttribute="bottom" constant="10" id="8pd-tv-C8j"/>
                                             <constraint firstItem="pCc-ZK-HRJ" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" constant="10" id="9wp-Cv-Rp9"/>
                                             <constraint firstAttribute="height" constant="1280" id="DJv-pr-uyE"/>
@@ -466,8 +470,6 @@
                                             <constraint firstItem="pCt-72-zMe" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" constant="10" id="EBM-jA-aUK"/>
                                             <constraint firstItem="LWt-As-zwp" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" constant="10" id="I7G-fz-rRx"/>
                                             <constraint firstAttribute="trailing" secondItem="Hv0-Of-tAV" secondAttribute="trailing" constant="10" id="IEl-Ce-2Es"/>
-                                            <constraint firstItem="pmP-k1-2AV" firstAttribute="top" secondItem="fHI-SD-8dE" secondAttribute="bottom" constant="10" id="IGD-V3-410"/>
-                                            <constraint firstAttribute="bottom" secondItem="pmP-k1-2AV" secondAttribute="bottom" constant="10" id="Ic8-Ez-rGz"/>
                                             <constraint firstItem="WPX-xf-OCy" firstAttribute="width" secondItem="92S-Ta-qtw" secondAttribute="width" multiplier="0.4" id="KHg-1s-bwZ"/>
                                             <constraint firstItem="QfY-k9-kCN" firstAttribute="top" secondItem="okO-i6-hEh" secondAttribute="bottom" constant="10" id="KsA-Me-xRm"/>
                                             <constraint firstAttribute="trailing" secondItem="Bor-lF-OiB" secondAttribute="trailing" constant="10" id="LGO-6U-ZfF"/>
@@ -476,7 +478,8 @@
                                             <constraint firstItem="pCt-72-zMe" firstAttribute="top" secondItem="WPX-xf-OCy" secondAttribute="bottom" constant="10" id="NkO-wH-dhE"/>
                                             <constraint firstItem="Hv0-Of-tAV" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" constant="10" id="OYJ-pw-LDX"/>
                                             <constraint firstAttribute="trailing" secondItem="8hW-gD-iv5" secondAttribute="trailing" constant="10" id="Pj2-96-qF6"/>
-                                            <constraint firstAttribute="trailing" secondItem="pmP-k1-2AV" secondAttribute="trailing" constant="10" id="RH3-eV-nfF"/>
+                                            <constraint firstAttribute="bottom" secondItem="pmP-k1-2AV" secondAttribute="bottom" id="Q17-x7-YHj"/>
+                                            <constraint firstItem="pmP-k1-2AV" firstAttribute="leading" secondItem="92S-Ta-qtw" secondAttribute="leading" id="SZ2-nm-b3x"/>
                                             <constraint firstItem="0sQ-aw-121" firstAttribute="width" secondItem="92S-Ta-qtw" secondAttribute="width" multiplier="0.3" id="X1I-ZF-zS0"/>
                                             <constraint firstItem="7vh-tl-2rv" firstAttribute="top" secondItem="Hv0-Of-tAV" secondAttribute="bottom" constant="10" id="YKc-pC-YQy"/>
                                             <constraint firstAttribute="width" constant="414" id="atc-td-9aZ"/>
@@ -522,10 +525,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eir-Ae-bfc"/>
+                    <connections>
+                        <outlet property="kullaniciAd" destination="WPX-xf-OCy" id="2KT-0r-Xag"/>
+                        <outlet property="kullaniciFoto" destination="QfY-k9-kCN" id="6uM-Ta-bVk"/>
+                        <outlet property="yemekAciklama" destination="FzC-63-Qcr" id="qro-0L-PdC"/>
+                        <outlet property="yemekHazirlikSayisi" destination="0sQ-aw-121" id="Ccj-mw-1UN"/>
+                        <outlet property="yemekKisiSayisi" destination="pCc-ZK-HRJ" id="CFq-i8-zxi"/>
+                        <outlet property="yemekMalzemeler" destination="7vh-tl-2rv" id="dEF-Oi-oyE"/>
+                        <outlet property="yemekPisirmeSuresi" destination="aQb-fm-Dgv" id="O29-NZ-2NI"/>
+                        <outlet property="yemekResim" destination="okO-i6-hEh" id="7S8-8f-U0b"/>
+                        <outlet property="yemekTarif" destination="fHI-SD-8dE" id="DMo-3H-V5c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2W-Ja-gDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="739" y="3063"/>
+            <point key="canvasLocation" x="737.68115942028987" y="3062.9464285714284"/>
         </scene>
         <!--Tarif Yükle-->
         <scene sceneID="7gb-8A-vdq">
