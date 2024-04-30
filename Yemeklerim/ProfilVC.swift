@@ -96,7 +96,6 @@ class ProfilVC: UIViewController {
         }
 
     @IBAction func profilDuzenleButton(_ sender: Any) {
-        self.makeAlert(titleInput: "Hata!", messageInput: "Düzenle Sayfasına Ulaşılamadı", button: "Tamam")
     }
     
 }

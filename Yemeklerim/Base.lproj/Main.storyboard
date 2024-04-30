@@ -271,14 +271,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoriCell" id="d7Z-Pa-GqE" customClass="TarifDefteriTableVC" customModule="Yemeklerim" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="49"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="49.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d7Z-Pa-GqE" id="K8k-zj-fto">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSL-aM-WGD">
-                                                    <rect key="frame" x="40" y="11" width="334" height="27"/>
+                                                    <rect key="frame" x="40" y="11" width="334" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -930,6 +930,7 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Düzenle"/>
                                         <connections>
                                             <action selector="profilDuzenleButton:" destination="ZnZ-MH-RtW" eventType="touchUpInside" id="PVc-Gu-fNP"/>
+                                            <segue destination="g2h-Ca-mOf" kind="show" id="DMj-4N-pyy"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fırat İLHAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzz-s6-TmR">
@@ -1048,6 +1049,79 @@ Togü Bilgisayar Mühendisliği Öğrencisiyim.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1p-U2-Xzu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2389.8550724637685" y="2218.5267857142858"/>
+        </scene>
+        <!--Profil Düzenle-->
+        <scene sceneID="5bt-Gz-3uo">
+            <objects>
+                <viewController id="g2h-Ca-mOf" customClass="ProfilDuzenleVC" customModule="Yemeklerim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kbx-56-CPd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="f" translatesAutoresizingMaskIntoConstraints="NO" id="xlI-Y7-4tL">
+                                <rect key="frame" x="103.5" y="122" width="207" height="180.5"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kullanıcı Adınız:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cnh-bo-zqI">
+                                <rect key="frame" x="20" y="352.5" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adınız ve Soyadınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbV-Zm-z3A">
+                                <rect key="frame" x="20" y="416.5" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profil Mesajınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uou-NM-g6C">
+                                <rect key="frame" x="20" y="544.5" width="374" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="He1-SY-RBP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail Adresiniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HER-47-yAs">
+                                <rect key="frame" x="20" y="480.5" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QqD-GL-9cN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="width" secondItem="QqD-GL-9cN" secondAttribute="width" multiplier="0.5" id="2Br-X4-0K9"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="HER-47-yAs" secondAttribute="trailing" constant="20" id="8Hq-3x-N62"/>
+                            <constraint firstItem="Uou-NM-g6C" firstAttribute="top" secondItem="HER-47-yAs" secondAttribute="bottom" constant="30" id="ELz-3l-sGC"/>
+                            <constraint firstItem="HER-47-yAs" firstAttribute="top" secondItem="WbV-Zm-z3A" secondAttribute="bottom" constant="30" id="GgL-EW-kWB"/>
+                            <constraint firstItem="Cnh-bo-zqI" firstAttribute="top" secondItem="xlI-Y7-4tL" secondAttribute="bottom" constant="50" id="KwO-hW-pMz"/>
+                            <constraint firstItem="Uou-NM-g6C" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="WTA-rB-GcH"/>
+                            <constraint firstItem="Cnh-bo-zqI" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="Xni-nH-8Hc"/>
+                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="height" secondItem="QqD-GL-9cN" secondAttribute="height" multiplier="0.25" id="bKE-JL-s8p"/>
+                            <constraint firstItem="HER-47-yAs" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="cIq-Y5-gH2"/>
+                            <constraint firstItem="WbV-Zm-z3A" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="chG-EC-rN9"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="Uou-NM-g6C" secondAttribute="trailing" constant="20" id="ciB-yO-KGP"/>
+                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="top" secondItem="QqD-GL-9cN" secondAttribute="top" constant="30" id="cyQ-Kh-TTk"/>
+                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="centerX" secondItem="Kbx-56-CPd" secondAttribute="centerX" id="gCz-t7-b8o"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="Cnh-bo-zqI" secondAttribute="trailing" constant="20" id="mKp-bS-rhU"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="WbV-Zm-z3A" secondAttribute="trailing" constant="20" id="qYh-BB-TZT"/>
+                            <constraint firstItem="WbV-Zm-z3A" firstAttribute="top" secondItem="Cnh-bo-zqI" secondAttribute="bottom" constant="30" id="wm3-gu-huU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profil Düzenle" id="qwE-Ua-0Yw">
+                        <barButtonItem key="rightBarButtonItem" title="Kaydet" id="QLv-ed-hTG"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="xlI-Y7-4tL" id="hVl-ug-70h"/>
+                        <outlet property="kullaniciAciklama" destination="Uou-NM-g6C" id="2f3-wE-9Qd"/>
+                        <outlet property="kullaniciAd" destination="Cnh-bo-zqI" id="DtF-i0-1sG"/>
+                        <outlet property="kullaniciAdSoyad" destination="WbV-Zm-z3A" id="udb-Pv-ZAg"/>
+                        <outlet property="kullaniciEmail" destination="HER-47-yAs" id="X0E-ry-7tJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="biC-3G-wbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iw8-4Q-aqF"/>
+            </objects>
+            <point key="canvasLocation" x="3279.7101449275365" y="2218.5267857142858"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UMI-73-XV9">
@@ -1168,7 +1242,7 @@ Togü Bilgisayar Mühendisliği Öğrencisiyim.
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0cZ-Iz-d8I"/>
-        <segue reference="Hx2-CX-1Sz"/>
+        <segue reference="GDD-GG-7ff"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="f" width="2729" height="2725"/>

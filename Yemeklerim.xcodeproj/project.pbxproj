@@ -27,6 +27,7 @@
 		3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */; };
 		3A0961912BD93F74000BE82A /* TarifDefteriTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */; };
 		3AFA37CE2BDD515E00BD21E7 /* ProfilCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */; };
+		3AFA37D82BE16FDC00BD21E7 /* ProfilDuzenleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnasayfaCollectionVC.swift; sourceTree = "<group>"; };
 		3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifDefteriTableVC.swift; sourceTree = "<group>"; };
 		3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCollectionVC.swift; sourceTree = "<group>"; };
+		3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilDuzenleVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				3A0961782BD8DF29000BE82A /* TarifYukleVC.swift */,
 				3A09617A2BD8DF6E000BE82A /* ProfilVC.swift */,
 				3A09617C2BD8DF9A000BE82A /* TarifDetayVC.swift */,
+				3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */,
 				3A0961642BD846F6000BE82A /* Main.storyboard */,
 				3A0961692BD846F8000BE82A /* LaunchScreen.storyboard */,
 				3A0961672BD846F8000BE82A /* Assets.xcassets */,
@@ -194,6 +197,7 @@
 				3A0961852BD8E548000BE82A /* Kullanicilar.swift in Sources */,
 				3A0961892BD8E59E000BE82A /* Yemekler.swift in Sources */,
 				3A09617B2BD8DF6E000BE82A /* ProfilVC.swift in Sources */,
+				3AFA37D82BE16FDC00BD21E7 /* ProfilDuzenleVC.swift in Sources */,
 				3AFA37CE2BDD515E00BD21E7 /* ProfilCollectionVC.swift in Sources */,
 				3A0961912BD93F74000BE82A /* TarifDefteriTableVC.swift in Sources */,
 				3A0961612BD846F6000BE82A /* SceneDelegate.swift in Sources */,
