@@ -10,17 +10,19 @@ import UIKit
 class ProfilDuzenleVC: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var kullaniciAd: UITextField!
+    @IBOutlet weak var kullaniciAd: UILabel!
+    @IBOutlet weak var kullaniciEmail: UILabel!
     @IBOutlet weak var kullaniciAdSoyad: UITextField!
     @IBOutlet weak var kullaniciAciklama: UITextField!
-    @IBOutlet weak var kullaniciEmail: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        kullaniciAd.isEnabled
-        kullaniciEmail.isEnabled
+       
+        
+        imageView.layer.cornerRadius = CGRectGetWidth(self.imageView.frame) / 2
+
         
         let gestureRecognizerKlavye = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
                 view.addGestureRecognizer(gestureRecognizerKlavye)

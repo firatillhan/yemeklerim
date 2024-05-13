@@ -10,8 +10,9 @@ import UIKit
 class AnasayfaCollectionVC: UICollectionViewCell {
     
     @IBOutlet weak var yemekResim: UIImageView!
-    
     @IBOutlet weak var kullaniciAd: UILabel!
-    
     @IBOutlet weak var yemekAd: UILabel!
+    
 }
+
+

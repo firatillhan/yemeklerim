@@ -18,6 +18,9 @@ class AnasayfaVC: UIViewController {
         super.viewDidLoad()
         yemeklerCVTasarim()
         
+       
+        
+        
         // Do any additional setup after loading the view.
         
         let yemek1 = Yemekler(yemekId: "1", yemekAd: "Mercimek Çorbası", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "çorba", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
@@ -119,5 +122,10 @@ extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     
 }
+
+
+
+
+
 
 

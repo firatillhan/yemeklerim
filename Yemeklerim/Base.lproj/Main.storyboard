@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PT4-gM-9GM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ItM-Ae-7tt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1058,30 +1058,49 @@ Togü Bilgisayar Mühendisliği Öğrencisiyim.
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="f" translatesAutoresizingMaskIntoConstraints="NO" id="xlI-Y7-4tL">
-                                <rect key="frame" x="103.5" y="122" width="207" height="180.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="f" translatesAutoresizingMaskIntoConstraints="NO" id="xlI-Y7-4tL">
+                                <rect key="frame" x="107" y="122" width="200" height="200"/>
                                 <gestureRecognizers/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kullanıcı Adınız:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cnh-bo-zqI">
-                                <rect key="frame" x="20" y="352.5" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adınız ve Soyadınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbV-Zm-z3A">
-                                <rect key="frame" x="20" y="416.5" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profil Mesajınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uou-NM-g6C">
-                                <rect key="frame" x="20" y="544.5" width="374" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="He1-SY-RBP"/>
+                                    <constraint firstAttribute="height" constant="200" id="sTL-kf-7Ec"/>
+                                    <constraint firstAttribute="width" constant="200" id="vCx-6d-VXM"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profil Mesajınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uou-NM-g6C">
+                                <rect key="frame" x="20" y="528.5" width="374" height="100"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="dZ3-Iq-YqQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail Adresiniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HER-47-yAs">
-                                <rect key="frame" x="20" y="480.5" width="374" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Kullanıcı Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWP-UA-ELS">
+                                <rect key="frame" x="20" y="332.5" width="374" height="36"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="CDW-eB-dV7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" systemColor="underPageBackgroundColor"/>
+                                <color key="highlightedColor" systemColor="systemGray4Color"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Kullanıcı Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTk-0R-6ly">
+                                <rect key="frame" x="20" y="398.5" width="374" height="36"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="4Ql-hy-OXN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" systemColor="underPageBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adınız ve Soyadınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbV-Zm-z3A">
+                                <rect key="frame" x="20" y="464.5" width="374" height="34"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Lll-Gv-BTC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1089,22 +1108,20 @@ Togü Bilgisayar Mühendisliği Öğrencisiyim.
                         <viewLayoutGuide key="safeArea" id="QqD-GL-9cN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="width" secondItem="QqD-GL-9cN" secondAttribute="width" multiplier="0.5" id="2Br-X4-0K9"/>
-                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="HER-47-yAs" secondAttribute="trailing" constant="20" id="8Hq-3x-N62"/>
-                            <constraint firstItem="Uou-NM-g6C" firstAttribute="top" secondItem="HER-47-yAs" secondAttribute="bottom" constant="30" id="ELz-3l-sGC"/>
-                            <constraint firstItem="HER-47-yAs" firstAttribute="top" secondItem="WbV-Zm-z3A" secondAttribute="bottom" constant="30" id="GgL-EW-kWB"/>
-                            <constraint firstItem="Cnh-bo-zqI" firstAttribute="top" secondItem="xlI-Y7-4tL" secondAttribute="bottom" constant="50" id="KwO-hW-pMz"/>
-                            <constraint firstItem="Uou-NM-g6C" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="WTA-rB-GcH"/>
-                            <constraint firstItem="Cnh-bo-zqI" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="Xni-nH-8Hc"/>
-                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="height" secondItem="QqD-GL-9cN" secondAttribute="height" multiplier="0.25" id="bKE-JL-s8p"/>
-                            <constraint firstItem="HER-47-yAs" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="cIq-Y5-gH2"/>
-                            <constraint firstItem="WbV-Zm-z3A" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="chG-EC-rN9"/>
-                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="Uou-NM-g6C" secondAttribute="trailing" constant="20" id="ciB-yO-KGP"/>
-                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="top" secondItem="QqD-GL-9cN" secondAttribute="top" constant="30" id="cyQ-Kh-TTk"/>
-                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="centerX" secondItem="Kbx-56-CPd" secondAttribute="centerX" id="gCz-t7-b8o"/>
-                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="Cnh-bo-zqI" secondAttribute="trailing" constant="20" id="mKp-bS-rhU"/>
-                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="WbV-Zm-z3A" secondAttribute="trailing" constant="20" id="qYh-BB-TZT"/>
-                            <constraint firstItem="WbV-Zm-z3A" firstAttribute="top" secondItem="Cnh-bo-zqI" secondAttribute="bottom" constant="30" id="wm3-gu-huU"/>
+                            <constraint firstItem="QWP-UA-ELS" firstAttribute="top" secondItem="xlI-Y7-4tL" secondAttribute="bottom" constant="10.5" id="0OF-jV-oRH"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="Uou-NM-g6C" secondAttribute="trailing" constant="20" id="8wq-23-npG"/>
+                            <constraint firstItem="KTk-0R-6ly" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="JoO-fb-mcS"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="KTk-0R-6ly" secondAttribute="trailing" constant="20" id="Len-hs-ko9"/>
+                            <constraint firstItem="WbV-Zm-z3A" firstAttribute="top" secondItem="KTk-0R-6ly" secondAttribute="bottom" constant="30" id="Pek-HN-3cZ"/>
+                            <constraint firstItem="WbV-Zm-z3A" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="Yrq-eW-NvX"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="QWP-UA-ELS" secondAttribute="trailing" constant="20" id="bJw-QL-jXB"/>
+                            <constraint firstItem="Uou-NM-g6C" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="g9u-6y-nYK"/>
+                            <constraint firstItem="Uou-NM-g6C" firstAttribute="top" secondItem="WbV-Zm-z3A" secondAttribute="bottom" constant="30" id="hjd-iE-W10"/>
+                            <constraint firstItem="KTk-0R-6ly" firstAttribute="top" secondItem="QWP-UA-ELS" secondAttribute="bottom" constant="30" id="kM8-4G-P6w"/>
+                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="centerX" secondItem="Kbx-56-CPd" secondAttribute="centerX" id="sDt-5f-1ev"/>
+                            <constraint firstItem="QWP-UA-ELS" firstAttribute="leading" secondItem="QqD-GL-9cN" secondAttribute="leading" constant="20" id="tNg-ev-6cl"/>
+                            <constraint firstItem="xlI-Y7-4tL" firstAttribute="top" secondItem="QqD-GL-9cN" secondAttribute="top" constant="30" id="uLi-NW-1gt"/>
+                            <constraint firstItem="QqD-GL-9cN" firstAttribute="trailing" secondItem="WbV-Zm-z3A" secondAttribute="trailing" constant="20" id="yhI-xb-71q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profil Düzenle" id="qwE-Ua-0Yw">
@@ -1113,9 +1130,9 @@ Togü Bilgisayar Mühendisliği Öğrencisiyim.
                     <connections>
                         <outlet property="imageView" destination="xlI-Y7-4tL" id="hVl-ug-70h"/>
                         <outlet property="kullaniciAciklama" destination="Uou-NM-g6C" id="2f3-wE-9Qd"/>
-                        <outlet property="kullaniciAd" destination="Cnh-bo-zqI" id="DtF-i0-1sG"/>
-                        <outlet property="kullaniciAdSoyad" destination="WbV-Zm-z3A" id="udb-Pv-ZAg"/>
-                        <outlet property="kullaniciEmail" destination="HER-47-yAs" id="X0E-ry-7tJ"/>
+                        <outlet property="kullaniciAd" destination="QWP-UA-ELS" id="Tmy-6U-a6V"/>
+                        <outlet property="kullaniciAdSoyad" destination="WbV-Zm-z3A" id="poB-1F-cRx"/>
+                        <outlet property="kullaniciEmail" destination="KTk-0R-6ly" id="8OK-Eu-POA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biC-3G-wbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1256,11 +1273,17 @@ Togü Bilgisayar Mühendisliği Öğrencisiyim.
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="underPageBackgroundColor">
+            <color red="0.70980392156862748" green="0.71764705882352942" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
