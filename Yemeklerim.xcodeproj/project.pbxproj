@@ -26,11 +26,14 @@
 		3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618C2BD8E65B000BE82A /* Alert.swift */; };
 		3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */; };
 		3A0961912BD93F74000BE82A /* TarifDefteriTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */; };
+		3A72338C2BF40EB100AB8885 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A72338B2BF40EB100AB8885 /* GoogleService-Info.plist */; };
 		3AFA37CE2BDD515E00BD21E7 /* ProfilCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */; };
 		3AFA37D82BE16FDC00BD21E7 /* ProfilDuzenleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */; };
+		4DEDB6198CD11EE023ACBFBD /* Pods_Yemeklerim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E4F437F3B2DF4E39717FE8E /* Pods_Yemeklerim.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DA7702B4094056190F73DDD /* Pods-Yemeklerim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yemeklerim.debug.xcconfig"; path = "Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim.debug.xcconfig"; sourceTree = "<group>"; };
 		3A09615B2BD846F6000BE82A /* Yemeklerim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yemeklerim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A09615E2BD846F6000BE82A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A0961602BD846F6000BE82A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,8 +55,11 @@
 		3A09618C2BD8E65B000BE82A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnasayfaCollectionVC.swift; sourceTree = "<group>"; };
 		3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifDefteriTableVC.swift; sourceTree = "<group>"; };
+		3A72338B2BF40EB100AB8885 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCollectionVC.swift; sourceTree = "<group>"; };
 		3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilDuzenleVC.swift; sourceTree = "<group>"; };
+		563336EAF639548D32D4A4AF /* Pods-Yemeklerim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yemeklerim.release.xcconfig"; path = "Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim.release.xcconfig"; sourceTree = "<group>"; };
+		9E4F437F3B2DF4E39717FE8E /* Pods_Yemeklerim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yemeklerim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEDB6198CD11EE023ACBFBD /* Pods_Yemeklerim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +79,8 @@
 			children = (
 				3A09615D2BD846F6000BE82A /* Yemeklerim */,
 				3A09615C2BD846F6000BE82A /* Products */,
+				C735916EBFAE71151A03ACDD /* Pods */,
+				7D8F990BFC44E0EF9536007F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +98,7 @@
 				3A09615E2BD846F6000BE82A /* AppDelegate.swift */,
 				3A0961602BD846F6000BE82A /* SceneDelegate.swift */,
 				3A09616C2BD846F8000BE82A /* Info.plist */,
+				3A72338B2BF40EB100AB8885 /* GoogleService-Info.plist */,
 				3A0961622BD846F6000BE82A /* GirisYapVC.swift */,
 				3A0961722BD8DDEF000BE82A /* KayitOlVC.swift */,
 				3A0961742BD8DE2C000BE82A /* AnasayfaVC.swift */,
@@ -112,6 +122,23 @@
 			path = Yemeklerim;
 			sourceTree = "<group>";
 		};
+		7D8F990BFC44E0EF9536007F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E4F437F3B2DF4E39717FE8E /* Pods_Yemeklerim.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C735916EBFAE71151A03ACDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2DA7702B4094056190F73DDD /* Pods-Yemeklerim.debug.xcconfig */,
+				563336EAF639548D32D4A4AF /* Pods-Yemeklerim.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +146,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A09616F2BD846F8000BE82A /* Build configuration list for PBXNativeTarget "Yemeklerim" */;
 			buildPhases = (
+				94C6F43FB1C9906218AE574D /* [CP] Check Pods Manifest.lock */,
 				3A0961572BD846F6000BE82A /* Sources */,
 				3A0961582BD846F6000BE82A /* Frameworks */,
 				3A0961592BD846F6000BE82A /* Resources */,
+				0444104AE08095DD43CCB746 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -171,12 +200,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A09616B2BD846F8000BE82A /* LaunchScreen.storyboard in Resources */,
+				3A72338C2BF40EB100AB8885 /* GoogleService-Info.plist in Resources */,
 				3A0961682BD846F8000BE82A /* Assets.xcassets in Resources */,
 				3A0961662BD846F6000BE82A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0444104AE08095DD43CCB746 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94C6F43FB1C9906218AE574D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yemeklerim-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A0961572BD846F6000BE82A /* Sources */ = {
@@ -263,7 +335,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -326,7 +398,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -347,6 +419,7 @@
 		};
 		3A0961702BD846F8000BE82A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DA7702B4094056190F73DDD /* Pods-Yemeklerim.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -376,6 +449,7 @@
 		};
 		3A0961712BD846F8000BE82A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 563336EAF639548D32D4A4AF /* Pods-Yemeklerim.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
