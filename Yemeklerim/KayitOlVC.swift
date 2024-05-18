@@ -14,17 +14,12 @@ import FirebaseAuth
 class KayitOlVC: UIViewController {
 
     
-    @IBOutlet weak var kullaniciAdLabel: UITextField!
-    
     @IBOutlet weak var kullaniciEmailLabel: UITextField!
-    
-    
     @IBOutlet weak var kullaniciSifreLabel: UITextField!
-    
-    
     @IBOutlet weak var kullaniciSifreTekrarLabel: UITextField!
     
-    
+    let db = Firestore.firestore()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,25 +37,40 @@ class KayitOlVC: UIViewController {
             makeAlert(titleInput: "Hata", messageInput: "Şifreler Uyuşmuyor", button: "Tamam")
             return
         } else {
-            if kullaniciAdLabel.text != "" && kullaniciEmailLabel.text != "" && kullaniciSifreLabel.text != "" &&  kullaniciSifreTekrarLabel.text != nil {
-               
-                Auth.auth().createUser(withEmail: kullaniciEmailLabel.text!, password: kullaniciSifreLabel.text!) { (authdata, error) in
-                    if error != nil {
-                        self.makeAlert(titleInput: "Hata!", messageInput: error?.localizedDescription ?? "Error", button: "Tamam")
+            guard let kullaniciEmail = kullaniciEmailLabel.text, !kullaniciEmail.isEmpty,
+                  let kullaniciSifre = kullaniciSifreLabel.text, !kullaniciSifre.isEmpty,
+                  let kullaniciSifreTekrar = kullaniciSifreTekrarLabel.text, !kullaniciSifreTekrar.isEmpty
+                else {
+                print("Lütfen bütün alanları doldurunuz!")
+                return
+            }
+            
+            Auth.auth().createUser(withEmail: kullaniciEmail, password: kullaniciSifre) { authResult, error in
+                if let error = error {
+                    print("Error creating user: \(error.localizedDescription)")
+                    return
+                }
+                guard let uid = authResult?.user.uid else { return }
+
+                self.db.collection("kullanicilar").document(uid).setData([
+                    "kullaniciAd": "",
+                    "kullaniciAdSoyad": "",
+                    "kullaniciEmail": kullaniciEmail,
+                    "kullaniciAciklama": "",
+                    "kullaniciResim": "" // Resim alanı başlangıçta boş bir string
+                ]) { error in
+                    if let error = error {
+                        print("Error adding user data to Firestore: \(error.localizedDescription)")
                     } else {
-                        self.makeAlert(titleInput: "Tebrikler", messageInput: "Kayıt oldunuz", button: "Tamam")
-                        self.kullaniciEmailLabel.text = ""
-                        self.kullaniciSifreLabel.text = ""
-                        self.kullaniciSifreTekrarLabel.text = ""
-                        self.kullaniciAdLabel.text = ""
-                        
+                        print("User data added to Firestore")
+                        self.makeAlert(titleInput: "Tebrikler", messageInput: "Kayıt işleminiz tamamlanmıştır.", button: "TAMAM")
                     }
                 }
-
-            } else {
-                print("hata")
-                makeAlert(titleInput: "Hata", messageInput: "Email/Şifre hata", button: "Tamam")
             }
+            
+            
+            
+      
         }
     }
     

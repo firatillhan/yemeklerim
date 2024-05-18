@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
@@ -14,7 +13,10 @@ import FirebaseAuth
 class GirisYapVC: UIViewController {
 
     @IBOutlet weak var userPasswordLabel: UITextField!
-    @IBOutlet weak var userNameLabel: UITextField!
+    @IBOutlet weak var userEmailLabel: UITextField!
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,7 +29,17 @@ class GirisYapVC: UIViewController {
 
 
     @IBAction func girisYapButton(_ sender: Any) {
-        performSegue(withIdentifier: "tabBar", sender: nil)
+        if userEmailLabel.text != "" && userPasswordLabel.text != nil {
+            Auth.auth().signIn(withEmail: userEmailLabel.text!, password: userPasswordLabel.text!) { (authdata, error) in
+                if error != nil {
+                self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "Error", button: "Tamam")
+                } else {
+                    self.performSegue(withIdentifier: "tabBar", sender: nil)
+                }
+            }
+        }else {
+            makeAlert(titleInput: "Hata", messageInput: "Email/Şifre hata", button: "Tamam")
+        }
     }
 }
 

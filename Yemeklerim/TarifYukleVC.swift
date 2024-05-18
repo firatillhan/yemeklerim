@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
 
-class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
+class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var yemekAd: UITextField!
     @IBOutlet weak var yemekAciklama: UITextField!
@@ -29,7 +32,7 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         pickerView = UIPickerView()
         pickerView?.delegate = self
         pickerView?.dataSource = self
-        kategorilerim = [ "Kahvaltılıklar","Çorbalar","Salatalar","Ana Yemekler","Makarnalar","Pilavlar","Izgaralar","Deniz Ürünleri","Vejeteryan Yemekler","Tatlılar"]
+        kategorilerim = [ "Kahvaltılıklar","Çorbalar","Salatalar","Ana Yemekler","Et Yemekleri","Tavuk Yemekleri","Makarnalar","Pilavlar","Izgaralar","Deniz Ürünleri","Vejeteryan Yemekler","Tatlılar"]
         kategoriSec.inputView = pickerView
         let toolbar = UIToolbar()
         toolbar.tintColor = UIColor.red
@@ -43,7 +46,23 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         let gestureRecognizerKlavye = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
                 view.addGestureRecognizer(gestureRecognizerKlavye)
         
+        yemekResim.isUserInteractionEnabled = true
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(resimSec))
+        yemekResim.addGestureRecognizer(gestureRecognizer)
+        
     }
+    @objc func resimSec() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = .photoLibrary
+        present(pickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        yemekResim.image = info[.originalImage] as? UIImage
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func hideKeyboard() {
                view.endEditing(true)
        }
@@ -58,13 +77,63 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     @IBAction func tarifYukleButton(_ sender: Any) {
-        if kategoriSec.text != "" {
-            self.makeAlert(titleInput: "Tebrikler", messageInput: "Tarifiniz yüklendi", button: "TAMAM")
-        } else {
-            self.makeAlert(titleInput: "Hata", messageInput: "Zorunlu alanları doldurunuz!!", button: "Tamam")
+        
+     
+        let storage = Storage.storage()
+        let storageReference = storage.reference()
+        let mediaFolder = storageReference.child("yemekResimMedia")
+        
+        if let data = yemekResim.image?.jpegData(compressionQuality: 0.5) {
+            let uuid = UUID().uuidString
+            let imageReference = mediaFolder.child("\(uuid).jpg")
+            imageReference.putData(data,metadata: nil){ (metadata,error) in
+                if error != nil {
+                    self.makeAlert(titleInput: "Hata!", messageInput: error?.localizedDescription ?? "Bilinmeyen hata", button: "TAMAM")
+                } else { //else başlangıç
+                    imageReference.downloadURL { (url, error) in
+                        if error == nil {
+                            let yemekUrl = url?.absoluteString
+                            let firestoreDatabase = Firestore.firestore()
+                            let yemekKaydet = [ "yemekTarih": FieldValue.serverTimestamp(),
+                                                "yemekResim": yemekUrl!,"yemekAd": self.yemekAd.text!,
+                                                "yemekKisiSayisi": self.yemekKisiSayisi.text!,
+                                                "yemekAciklama":self.yemekAciklama.text!,
+                                                "yemekHazirlikSuresi": self.yemekHazirlikSuresi.text!,
+                                                "yemekTarif": self.yemekTarif.text!,
+                                                "yemekPisirmeSuresi": self.yemekPisirmeSuresi.text!,
+                                                "yemekMalzemeler" : self.yemekMalzemeler.text!,
+                                                "kategori" : self.kategoriSec.text!,
+                                                "kullaniciEmail": Auth.auth().currentUser!.email!,
+                                                "kullaniciUid": Auth.auth().currentUser!.uid] as [String : Any]
+                            
+                            var firestoreReference : DocumentReference? = nil
+                                firestoreReference = firestoreDatabase.collection("yemekler").addDocument(data: yemekKaydet, completion: { (error) in
+                                if error != nil {
+                                    self.makeAlert(titleInput: "Hata!", messageInput: error?.localizedDescription ?? "Hata!", button: "TAMAM")
+                                } else {
+                                    self.yemekResim.image = UIImage(named: "select")
+                                    self.yemekAd.text = ""
+                                    self.yemekKisiSayisi.text = ""
+                                    self.yemekKisiSayisi.text = ""
+                                    self.yemekHazirlikSuresi.text = ""
+                                    self.yemekTarif.text = ""
+                                    self.yemekPisirmeSuresi.text = ""
+                                    self.yemekMalzemeler.text = ""
+                                    self.yemekAciklama.text = ""
+                                    self.tabBarController?.selectedIndex = 0
+                                }
+                            })
+                            
+                        }
+                    }
+                }
+            } //else bitiş
         }
         
+        
     }
+
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

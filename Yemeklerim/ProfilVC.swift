@@ -1,26 +1,27 @@
-//
 //  ProfilVC.swift
 //  Yemeklerim
-//
 //  Created by Fırat İlhan on 24.04.2024.
-//
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class ProfilVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    var emptyMessageLabel: UILabel!
     var yemekListesi = [Yemekler]()
     
-    @IBOutlet weak var kullaniciLabel: UILabel!
     @IBOutlet weak var userProfilPhoto: UIImageView!
+    @IBOutlet weak var tarifSayisiLabel: UILabel!
     
-    @IBOutlet weak var kullaniciAdiLabel: UIBarButtonItem!
-    
+    @IBOutlet weak var kullaniciAd: UILabel!
+    @IBOutlet weak var kullaniciAdSoyad: UILabel!
+    @IBOutlet weak var kullaniciEmail: UILabel!
     @IBOutlet weak var kullaniciAciklama: UILabel!
     
+    let kullanici = Auth.auth().currentUser!
+    let db = Firestore.firestore()
     
-    
-    @IBOutlet weak var tarifSayisiLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,52 +31,74 @@ class ProfilVC: UIViewController {
         yemeklerCVTasarim()
         userProfilPhoto.layer.cornerRadius = CGRectGetWidth(self.userProfilPhoto.frame) / 2
         userProfilPhoto.layer.borderWidth = 2
+        userData()
+        
+        navigationController?.navigationBar.topItem?.title = kullanici.email!
+
         
         
+//        let yemek1 = Yemekler(yemekId: "1", yemekAd: "Mercimek Çorbası", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "çorba", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
+//        yemekListesi.append(yemek1)
+  
         
         
-        let yemek1 = Yemekler(yemekId: "1", yemekAd: "Mercimek Çorbası", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "çorba", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
+        // UILabel oluşturma
+        emptyMessageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
+        emptyMessageLabel.text = "Henüz tarif yüklemediniz"
+        emptyMessageLabel.textColor = .gray
+        emptyMessageLabel.textAlignment = .center
+        emptyMessageLabel.font = UIFont.systemFont(ofSize: 20)
         
-        let yemek2 = Yemekler(yemekId: "1", yemekAd: "Bulgur Pilavı", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "bulgurPilavi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Pilavlar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
+        collectionView.backgroundView = emptyMessageLabel
         
-        let yemek3 = Yemekler(yemekId: "1", yemekAd: "Tavuk sote", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "tavukSote", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Tavuk Yemekleri"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
+        // Verileri kontrol edin ve UILabel'in görünürlüğünü ayarlayın
+        checkData()
         
-        let yemek4 = Yemekler(yemekId: "1", yemekAd: "Ezogelin Çorbası", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "ezogelinCorbasi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
         
-        let yemek5 = Yemekler(yemekId: "1", yemekAd: "magnolia", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "magnolia", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Tatlılar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
-        
-        let yemek6 = Yemekler(yemekId: "1", yemekAd: "Peynir Eritmesi", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "peynirEritmesi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Kahvaltılıklar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
-        
-        let yemek7 = Yemekler(yemekId: "1", yemekAd: "Mercimek Çorbası", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "çorba", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
-        
-        let yemek8 = Yemekler(yemekId: "1", yemekAd: "Bulgur Pilavı", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "bulgurPilavi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Pilavlar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
-        
-        let yemek9 = Yemekler(yemekId: "1", yemekAd: "Tavuk sote", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "tavukSote", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Tavuk Yemekleri"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
-        
-        let yemek10 = Yemekler(yemekId: "1", yemekAd: "Ezogelin Çorbası", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "ezogelinCorbasi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
-        
-        let yemek11 = Yemekler(yemekId: "1", yemekAd: "magnolia", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "magnolia", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Tatlılar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
-        
-        let yemek12 = Yemekler(yemekId: "1", yemekAd: "Peynir Eritmesi", yemekKisiSayisi: "2 kişilik", yemekAciklama: "Açıklama", yemekHazirlikSuresi: "hazırlık süresi", yemekTarif: "tarif", yemekResim: "peynirEritmesi", yemekPisirmeSuresi: "20 dakika", yemekMalzemeler: "malzemeler", kategori: Kategoriler(kategoriId: "1", kategoriAd: "Kahvaltılıklar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "fıratilhan08", kullaniciAdSoyad: "fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "öğrenci", kullaniciSifre: "111111", kullaniciEmail: "firatilhan008@gmail.com"))
+    }
+    func checkData() {
+        if yemekListesi.isEmpty {
+            emptyMessageLabel.isHidden = false
+        } else {
+            emptyMessageLabel.isHidden = true
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        userData()
+    }
+    
+    
+    
+    func userData(){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         
       
+
+        db.collection("kullanicilar").document(uid).getDocument { document, error in
+            if let document = document, document.exists {
+                let data = document.data()
+                self.navigationController?.navigationBar.topItem?.title = data?["kullaniciAd"] as? String ?? ""
+                self.kullaniciAdSoyad.text = data?["kullaniciAdSoyad"] as? String ?? ""
+                self.kullaniciEmail.text = data?["kullaniciEmail"] as? String ?? ""
+                self.kullaniciAciklama.text = data?["kullaniciAciklama"] as? String ?? ""
+                if let imageURL = data?["kullaniciResim"] as? String, let url = URL(string: imageURL) {
+                    URLSession.shared.dataTask(with: url) { data, response, error in
+                        if let data = data, error == nil {
+                            DispatchQueue.main.async {
+                                self.userProfilPhoto.image = UIImage(data: data)
+                            }
+                        }
+                    }.resume()
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
         
         
-        
-        
-        yemekListesi.append(yemek1)
-        yemekListesi.append(yemek2)
-        yemekListesi.append(yemek3)
-        yemekListesi.append(yemek4)
-        yemekListesi.append(yemek5)
-        yemekListesi.append(yemek6)
-        yemekListesi.append(yemek7)
-        yemekListesi.append(yemek8)
-        yemekListesi.append(yemek9)
-        yemekListesi.append(yemek10)
-        yemekListesi.append(yemek11)
-        yemekListesi.append(yemek12)
     }
+
     
     func yemeklerCVTasarim() {
            
@@ -96,7 +119,20 @@ class ProfilVC: UIViewController {
         }
 
     @IBAction func profilDuzenleButton(_ sender: Any) {
+        performSegue(withIdentifier: "profilDuzenle", sender: nil)
     }
+    
+    @IBAction func logOutButton(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            self.performSegue(withIdentifier: "logOut", sender: nil)
+        } catch {
+            
+        }
+    }
+    
+    
+    
     
 }
 

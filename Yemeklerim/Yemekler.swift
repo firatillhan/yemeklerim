@@ -10,25 +10,26 @@ import Foundation
 
 class Yemekler:Codable{
     
-    var yemekId:String? //
-    var yemekAd:String? //
-    var yemekKisiSayisi:String? //
-    var yemekAciklama:String? //
-    var yemekHazirlikSuresi:String? //
-    var yemekTarif:String?
-    var yemekResim:String? //
-    var yemekPisirmeSuresi:String? //
-    var yemekMalzemeler:String? //
     
+    var yemekAd:String?
+    var yemekKisiSayisi:String?
+    var yemekAciklama:String?
+    var yemekHazirlikSuresi:String?
+    var yemekTarif:String?
+    var yemekResim:String?
+    var yemekPisirmeSuresi:String?
+    var yemekMalzemeler:String?
+    var kategori:String?
+   
+    var kullaniciEmail:String?
 
-    var kategori:Kategoriler?
-    var kullanici:Kullanicilar?
+    
 
     init(){
         
     }
-    init(yemekId:String,yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:Kategoriler,kullanici:Kullanicilar) {
-        self.yemekId = yemekId
+    init(yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:String,kullaniciEmail:String) {
+       
         self.yemekAd = yemekAd
         self.yemekKisiSayisi = yemekKisiSayisi
         self.yemekAciklama = yemekAciklama
@@ -38,6 +39,6 @@ class Yemekler:Codable{
         self.yemekPisirmeSuresi = yemekPisirmeSuresi
         self.yemekMalzemeler = yemekMalzemeler
         self.kategori = kategori
-        self.kullanici = kullanici
+        self.kullaniciEmail = kullaniciEmail
     }
 }
