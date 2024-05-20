@@ -23,7 +23,7 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var yemekTarif: UITextField!
     
     var pickerView:UIPickerView?
-    var kategorilerim:[String] = [String]()
+    var kategoriListesi = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         pickerView = UIPickerView()
         pickerView?.delegate = self
         pickerView?.dataSource = self
-        kategorilerim = [ "Kahvaltılıklar","Çorbalar","Salatalar","Ana Yemekler","Et Yemekleri","Tavuk Yemekleri","Makarnalar","Pilavlar","Izgaralar","Deniz Ürünleri","Vejeteryan Yemekler","Tatlılar"]
+        kategoriListesi = [ "Kahvaltılıklar","Çorbalar","Salatalar","Ana Yemekler","Et Yemekleri","Tavuk Yemekleri","Makarnalar","Pilavlar","Izgaralar","Deniz Ürünleri","Vejeteryan Yemekler","Tatlılar"]
         kategoriSec.inputView = pickerView
         let toolbar = UIToolbar()
         toolbar.tintColor = UIColor.red
@@ -57,6 +57,8 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         pickerController.sourceType = .photoLibrary
         present(pickerController, animated: true, completion: nil)
     }
+  
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         yemekResim.image = info[.originalImage] as? UIImage
@@ -95,7 +97,8 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
                             let yemekUrl = url?.absoluteString
                             let firestoreDatabase = Firestore.firestore()
                             let yemekKaydet = [ "yemekTarih": FieldValue.serverTimestamp(),
-                                                "yemekResim": yemekUrl!,"yemekAd": self.yemekAd.text!,
+                                                "yemekResim": yemekUrl!,
+                                                "yemekAd": self.yemekAd.text!,
                                                 "yemekKisiSayisi": self.yemekKisiSayisi.text!,
                                                 "yemekAciklama":self.yemekAciklama.text!,
                                                 "yemekHazirlikSuresi": self.yemekHazirlikSuresi.text!,
@@ -139,13 +142,13 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return kategorilerim.count
+        return kategoriListesi.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return kategorilerim[row]
+        return kategoriListesi[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        kategoriSec.text = kategorilerim[row]
+        kategoriSec.text = kategoriListesi[row]
     }
 }
 

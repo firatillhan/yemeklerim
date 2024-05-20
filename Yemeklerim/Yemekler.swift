@@ -10,7 +10,7 @@ import Foundation
 
 class Yemekler:Codable{
     
-    
+    var yemekId:String?
     var yemekAd:String?
     var yemekKisiSayisi:String?
     var yemekAciklama:String?
@@ -19,8 +19,10 @@ class Yemekler:Codable{
     var yemekResim:String?
     var yemekPisirmeSuresi:String?
     var yemekMalzemeler:String?
+    
+    
     var kategori:String?
-   
+    var kullaniciUid:String?
     var kullaniciEmail:String?
 
     
@@ -28,8 +30,10 @@ class Yemekler:Codable{
     init(){
         
     }
-    init(yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:String,kullaniciEmail:String) {
+    
+    init(yemekId:String,yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:String,kullaniciUid:String,kullaniciEmail:String) {
        
+        self.yemekId = yemekId
         self.yemekAd = yemekAd
         self.yemekKisiSayisi = yemekKisiSayisi
         self.yemekAciklama = yemekAciklama
@@ -39,6 +43,7 @@ class Yemekler:Codable{
         self.yemekPisirmeSuresi = yemekPisirmeSuresi
         self.yemekMalzemeler = yemekMalzemeler
         self.kategori = kategori
+        self.kullaniciUid = kullaniciUid
         self.kullaniciEmail = kullaniciEmail
     }
 }

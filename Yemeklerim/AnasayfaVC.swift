@@ -15,9 +15,10 @@ class AnasayfaVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var yemekListesi = [Yemekler]()
+    var kategoriListesi = [Kategoriler]()
     let kullanici = Auth.auth().currentUser!
 
-  //  var ref:DatabaseReference!
+   
 
     
     override func viewDidLoad() {
@@ -25,39 +26,53 @@ class AnasayfaVC: UIViewController {
         yemeklerCVTasarim()
         
         // Do any additional setup after loading the view.
-       //yemekleriGetir()
-        tumYemekleriGetir()
+        yemekleriGetir()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
     }
     
     func yemekleriGetir(){
-//        let fireStoreDatabase = Firestore.firestore()
-//        fireStoreDatabase.collection("yemekler").addSnapshotListener { (snapshot,error) in
-//            if error != nil {
-//                self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata", button: "TAMAM")
-//            } else {
-//                if snapshot?.isEmpty != true && snapshot != nil {
-//                    self.yemekListesi.removeAll(keepingCapacity: false)
-//                    
-//                    for document in snapshot!.documents {
-//                        let documentID = document.documentID
-//                        
-//                       
-//                        
-//                        
-//                    }
-//                    self.collectionView.reloadData()
-//                }
-//            }
-//        }
-    }
-    
-    
-    func tumYemekleriGetir(){
- 
-    }
+        let fireStoreDatabase = Firestore.firestore()
+        fireStoreDatabase.collection("yemekler").addSnapshotListener { (snapshot,error) in
+            if error != nil {
+                self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata", button: "TAMAM")
+            } else {
+                if snapshot?.isEmpty != true && snapshot != nil {
+                    self.yemekListesi.removeAll(keepingCapacity: false)
+                    
+                    for document in snapshot!.documents {
+                        let documentID = document.documentID
 
+                        let yemekAd = document.get("yemekAd") as? String
+                        let yemekKisiSayisi = document.get("yemekKisiSayisi") as? String
+                        let yemekAciklama = document.get("yemekAciklama") as? String
+                        let yemekHazirlikSuresi = document.get("yemekHazirlikSuresi") as? String
+                        let yemekTarif = document.get("yemekTarif") as? String
+                        let yemekResim = document.get("yemekResim") as? String
+                        let yemekPisirmeSuresi = document.get("yemekPisirmeSuresi") as? String
+                        let yemekMalzemeler = document.get("yemekMalzemeler") as? String
+                        let kategori = document.get("kategori") as? String
+                        let kullaniciUid = document.get("kullaniciUid") as? String
+                        let kullaniciEmail = document.get("kullaniciEmail") as? String
+                        
+                        let yemek = Yemekler(yemekId: documentID, yemekAd: yemekAd!, yemekKisiSayisi: yemekKisiSayisi!, yemekAciklama: yemekAciklama!, yemekHazirlikSuresi: yemekHazirlikSuresi!, yemekTarif: yemekTarif!, yemekResim: yemekResim!, yemekPisirmeSuresi: yemekPisirmeSuresi!, yemekMalzemeler: yemekMalzemeler!, kategori: kategori!, kullaniciUid: kullaniciUid!, kullaniciEmail: kullaniciEmail!)
+                        self.yemekListesi.append(yemek)
+                    }
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
+    
+    
+   
+    
+        
+
+    
+    
+    
     func yemeklerCVTasarim() {
            
         let tasarim :UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -98,7 +113,7 @@ extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let yemek = yemekListesi[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnasayfaCell", for: indexPath) as! AnasayfaCollectionVC
         cell.yemekAd.text = yemek.yemekAd
-        cell.kullaniciAd.text = yemek.kullaniciEmail
+        cell.kullaniciAd.text = yemek.kullaniciUid
         cell.yemekResim.image = UIImage(named: "select")
         
         return cell
