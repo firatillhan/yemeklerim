@@ -19,13 +19,7 @@ class TarifDefteriVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-       
-//        let favori1 = FavoriYemekler(favoriYemekId: "1", yemek: Yemekler(yemekId: "1", yemekAd: "Mercimek Çorbası", yemekKisiSayisi: "4 kişilik", yemekAciklama: "Nefis mercimek çorbası", yemekHazirlikSuresi: "20 dakika", yemekTarif: "mercimek çorbası tarifi", yemekResim: "çorba", yemekPisirmeSuresi: "30 dakika", yemekMalzemeler: "mercimek çorbası için gerekli tarifler", kategori: Kategoriler(kategoriId: "", kategoriAd: "Çorbalar"), kullanici: Kullanicilar(kullaniciId: "1", kullaniciAd: "firatilhan08", kullaniciAdSoyad: "Fırat ilhan", kullaniciFoto: "f", kullaniciAciklama: "Bilgisayar mühendisliği öğrencisi", kullaniciSifre: "111222333", kullaniciEmail: "firatilhan008@gmail.com")))
-//        
-//      
-//        
-//        favoriTarifListesi.append(favori1)
-       
+
         
     }
     

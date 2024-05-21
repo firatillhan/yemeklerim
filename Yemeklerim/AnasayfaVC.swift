@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
-
+import SDWebImage
 class AnasayfaVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -27,10 +27,12 @@ class AnasayfaVC: UIViewController {
         
         // Do any additional setup after loading the view.
         yemekleriGetir()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
     }
+    
     
     func yemekleriGetir(){
         let fireStoreDatabase = Firestore.firestore()
@@ -64,11 +66,9 @@ class AnasayfaVC: UIViewController {
             }
         }
     }
-    
-    
    
     
-        
+   
 
     
     
@@ -91,7 +91,8 @@ class AnasayfaVC: UIViewController {
                 collectionView.collectionViewLayout = tasarim
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            let indeks = sender as? Int
+            
+        let indeks = sender as? Int
             let gidilecekVC = segue.destination as! TarifDetayVC
             gidilecekVC.yemek = yemekListesi[indeks!]
         }
@@ -113,15 +114,15 @@ extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let yemek = yemekListesi[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnasayfaCell", for: indexPath) as! AnasayfaCollectionVC
         cell.yemekAd.text = yemek.yemekAd
-        cell.kullaniciAd.text = yemek.kullaniciUid
-        cell.yemekResim.image = UIImage(named: "select")
-        
+        cell.kullaniciAd.text = yemek.kullaniciEmail
+        cell.yemekResim.sd_setImage(with: URL(string: yemek.yemekResim!))
         return cell
-        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let yemek = yemekListesi[indexPath.row]
         self.performSegue(withIdentifier: "homeToDetay", sender: indexPath.row)
-        print("Tıklandı")
+        print("seçilen hucre: \(yemek.yemekAd!)")
     }
     
     

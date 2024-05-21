@@ -98,6 +98,7 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
                             let firestoreDatabase = Firestore.firestore()
                             let yemekKaydet = [ "yemekTarih": FieldValue.serverTimestamp(),
                                                 "yemekResim": yemekUrl!,
+                                                "yemekId": "",
                                                 "yemekAd": self.yemekAd.text!,
                                                 "yemekKisiSayisi": self.yemekKisiSayisi.text!,
                                                 "yemekAciklama":self.yemekAciklama.text!,

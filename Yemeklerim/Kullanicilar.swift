@@ -12,21 +12,20 @@ class Kullanicilar:Codable {
     var kullaniciId:String?
     var kullaniciAd:String?
     var kullaniciAdSoyad:String?
-    var kullaniciFoto:String?
+    var kullaniciResim:String?
     var kullaniciAciklama:String?
-    var kullaniciSifre:String?
     var kullaniciEmail:String?
     
     init() {
         
     }
-    init(kullaniciId:String,kullaniciAd:String,kullaniciAdSoyad:String,kullaniciFoto:String,kullaniciAciklama:String,kullaniciSifre:String,kullaniciEmail:String){
+    
+    init(kullaniciId:String,kullaniciAd:String,kullaniciAdSoyad:String,kullaniciResim:String,kullaniciAciklama:String,kullaniciEmail:String){
         self.kullaniciId = kullaniciId
         self.kullaniciAd = kullaniciAd
         self.kullaniciAdSoyad = kullaniciAdSoyad
-        self.kullaniciFoto = kullaniciFoto
+        self.kullaniciResim = kullaniciResim
         self.kullaniciAciklama = kullaniciAciklama
-        self.kullaniciSifre = kullaniciSifre
         self.kullaniciEmail = kullaniciEmail
     }
 }

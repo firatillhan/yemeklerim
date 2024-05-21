@@ -19,18 +19,17 @@ class Yemekler:Codable{
     var yemekResim:String?
     var yemekPisirmeSuresi:String?
     var yemekMalzemeler:String?
-    
-    
-    var kategori:String?
     var kullaniciUid:String?
     var kullaniciEmail:String?
+    
+    var kategori:String?
+  
 
     
 
     init(){
         
     }
-    
     init(yemekId:String,yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:String,kullaniciUid:String,kullaniciEmail:String) {
        
         self.yemekId = yemekId

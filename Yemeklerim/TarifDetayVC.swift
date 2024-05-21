@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class TarifDetayVC: UIViewController {
     
@@ -26,6 +27,21 @@ class TarifDetayVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        if let y = yemek{
+            navigationItem.title = y.yemekAd
+            yemekKisiSayisi.text = y.yemekKisiSayisi
+            yemekHazirlikSayisi.text = y.yemekHazirlikSuresi
+            yemekPisirmeSuresi.text = y.yemekPisirmeSuresi
+            yemekAciklama.text = y.yemekAciklama
+            yemekMalzemeler.text = y.yemekMalzemeler
+            yemekTarif.text = y.yemekTarif
+            kullaniciAd.text = y.kullaniciEmail
+            if let resimUrl = y.yemekResim {
+                yemekResim.sd_setImage(with: URL(string: resimUrl))
+            }
+        }
 
     }
     
