@@ -346,7 +346,7 @@
                                                     <action selector="deftereEkleButton:" destination="2SA-oP-JzB" eventType="touchUpInside" id="gmR-GX-FFR"/>
                                                 </connections>
                                             </button>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yemek Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCt-72-zMe">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kategori: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCt-72-zMe">
                                                 <rect key="frame" x="10" y="300" width="394" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="wCc-MZ-N5Z"/>
@@ -507,6 +507,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eir-Ae-bfc"/>
                     <connections>
+                        <outlet property="kategoriLabel" destination="pCt-72-zMe" id="127-gs-FEX"/>
                         <outlet property="kullaniciAd" destination="WPX-xf-OCy" id="2KT-0r-Xag"/>
                         <outlet property="kullaniciFoto" destination="QfY-k9-kCN" id="6uM-Ta-bVk"/>
                         <outlet property="yemekAciklama" destination="FzC-63-Qcr" id="qro-0L-PdC"/>

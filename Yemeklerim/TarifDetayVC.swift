@@ -23,6 +23,8 @@ class TarifDetayVC: UIViewController {
     @IBOutlet weak var yemekMalzemeler: UILabel!
     @IBOutlet weak var yemekTarif: UILabel!
     
+    @IBOutlet weak var kategoriLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,10 +32,11 @@ class TarifDetayVC: UIViewController {
         
         
         if let y = yemek{
-            navigationItem.title = y.yemekAd
-            yemekKisiSayisi.text = y.yemekKisiSayisi
-            yemekHazirlikSayisi.text = y.yemekHazirlikSuresi
-            yemekPisirmeSuresi.text = y.yemekPisirmeSuresi
+            navigationItem.title = "Kategori: \(y.kategori!)"
+            kategoriLabel.text = y.yemekAd
+            yemekKisiSayisi.text = "\(y.yemekKisiSayisi!) Kişilik"
+            yemekHazirlikSayisi.text = "Hazırlık: \(y.yemekHazirlikSuresi!)"
+            yemekPisirmeSuresi.text = "Pişirme: \(y.yemekPisirmeSuresi!)"
             yemekAciklama.text = y.yemekAciklama
             yemekMalzemeler.text = y.yemekMalzemeler
             yemekTarif.text = y.yemekTarif
@@ -42,15 +45,8 @@ class TarifDetayVC: UIViewController {
                 yemekResim.sd_setImage(with: URL(string: resimUrl))
             }
         }
-
     }
-    
-
     @IBAction func deftereEkleButton(_ sender: Any) {
         self.makeAlert(titleInput: "Tebrikler", messageInput: "Tarif deftere eklendi", button: "Tamam")
     }
-    
-
-
-
 }

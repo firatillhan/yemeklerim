@@ -32,7 +32,7 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         pickerView = UIPickerView()
         pickerView?.delegate = self
         pickerView?.dataSource = self
-        kategoriListesi = [ "Kahvaltılıklar","Çorbalar","Salatalar","Ana Yemekler","Et Yemekleri","Tavuk Yemekleri","Makarnalar","Pilavlar","Izgaralar","Deniz Ürünleri","Vejeteryan Yemekler","Tatlılar"]
+        kategoriListesi = [ "Kahvaltılıklar","Çorbalar","Salatalar","Ana Yemekler","Et Yemekleri","Tavuk Yemekleri","Makarnalar","Pilavlar","Izgaralar","Deniz Ürünleri","Vejeteryan Yemekler","Tatlılar","İçecekler"]
         kategoriSec.inputView = pickerView
         let toolbar = UIToolbar()
         toolbar.tintColor = UIColor.red
