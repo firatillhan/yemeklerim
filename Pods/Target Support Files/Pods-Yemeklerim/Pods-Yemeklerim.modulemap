@@ -1,0 +1,6 @@
+framework module Pods_Yemeklerim {
+  umbrella header "Pods-Yemeklerim-umbrella.h"
+
+  export *
+  module * { export * }
+}
