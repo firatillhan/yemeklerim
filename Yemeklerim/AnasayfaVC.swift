@@ -10,33 +10,25 @@ import FirebaseFirestore
 import FirebaseAuth
 import SDWebImage
 class AnasayfaVC: UIViewController {
-    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var yemekListesi = [Yemekler]()
-    var kategoriListesi = [Kategoriler]()
     let kullanici = Auth.auth().currentUser!
 
-   
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         yemeklerCVTasarim()
-        
-        // Do any additional setup after loading the view.
         yemekleriGetir()
-        
         collectionView.delegate = self
         collectionView.dataSource = self
-        
     }
-    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        yemekleriGetir()
+    }
     func yemekleriGetir(){
         let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("yemekler").addSnapshotListener { (snapshot,error) in
+        fireStoreDatabase.collection("yemekler").order(by: "yemekTarih", descending: true).addSnapshotListener { (snapshot,error) in
             if error != nil {
                 self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata", button: "TAMAM")
             } else {
@@ -56,9 +48,10 @@ class AnasayfaVC: UIViewController {
                         let yemekMalzemeler = document.get("yemekMalzemeler") as? String
                         let kategori = document.get("kategori") as? String
                         let kullaniciUid = document.get("kullaniciUid") as? String
-                        let kullaniciEmail = document.get("kullaniciEmail") as? String
+                        let kullaniciAd = document.get("kullaniciAd") as? String
+                    
+                        let yemek = Yemekler(yemekId: documentID, yemekAd: yemekAd!, yemekKisiSayisi: yemekKisiSayisi!, yemekAciklama: yemekAciklama!, yemekHazirlikSuresi: yemekHazirlikSuresi!, yemekTarif: yemekTarif!, yemekResim: yemekResim!, yemekPisirmeSuresi: yemekPisirmeSuresi!, yemekMalzemeler: yemekMalzemeler!, kategori: kategori!, kullaniciUid: kullaniciUid!,kullaniciAd:kullaniciAd ?? "kullanıcı adı boş")
                         
-                        let yemek = Yemekler(yemekId: documentID, yemekAd: yemekAd!, yemekKisiSayisi: yemekKisiSayisi!, yemekAciklama: yemekAciklama!, yemekHazirlikSuresi: yemekHazirlikSuresi!, yemekTarif: yemekTarif!, yemekResim: yemekResim!, yemekPisirmeSuresi: yemekPisirmeSuresi!, yemekMalzemeler: yemekMalzemeler!, kategori: kategori!, kullaniciUid: kullaniciUid!, kullaniciEmail: kullaniciEmail!)
                         self.yemekListesi.append(yemek)
                     }
                     self.collectionView.reloadData()
@@ -66,30 +59,25 @@ class AnasayfaVC: UIViewController {
             }
         }
     }
-   
+  
     
-   
+    func yemeklerCVTasarim() {
+        let tasarim :UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+                let genislik = self.collectionView.frame.size.width
+                tasarim.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+                let hucreGenislik = (genislik-30)/2
+                tasarim.itemSize = CGSize(width: hucreGenislik, height: hucreGenislik*1.7)
+                tasarim.minimumInteritemSpacing = 10
+                tasarim.minimumLineSpacing = 10
+                collectionView.collectionViewLayout = tasarim
+        }
+    
 
     
     
     
-    func yemeklerCVTasarim() {
-           
-        let tasarim :UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-                
-                let genislik = self.collectionView.frame.size.width
-                
-                tasarim.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-                
-                let hucreGenislik = (genislik-30)/2
-                
-                tasarim.itemSize = CGSize(width: hucreGenislik, height: hucreGenislik*1.7)
-                
-                tasarim.minimumInteritemSpacing = 10
-                tasarim.minimumLineSpacing = 10
-                
-                collectionView.collectionViewLayout = tasarim
-        }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
         let indeks = sender as? Int
@@ -114,18 +102,18 @@ extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let yemek = yemekListesi[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnasayfaCell", for: indexPath) as! AnasayfaCollectionVC
         cell.yemekAd.text = yemek.yemekAd
-        cell.kullaniciAd.text = yemek.kullaniciEmail
+        cell.kullaniciAd.text = yemek.kullaniciAd
         cell.yemekResim.sd_setImage(with: URL(string: yemek.yemekResim!))
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let yemek = yemekListesi[indexPath.row]
         self.performSegue(withIdentifier: "homeToDetay", sender: indexPath.row)
     }
     
     
 }
+
+
 
 
 

@@ -24,10 +24,17 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
     
     var pickerView:UIPickerView?
     var kategoriListesi = [String]()
+    var kullaniciAd = String()
+    
+    let db = Firestore.firestore()
+    let storage = Storage.storage()
+    let kullanici = Auth.auth().currentUser!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
         // Do any additional setup after loading the view.
         pickerView = UIPickerView()
         pickerView?.delegate = self
@@ -78,12 +85,31 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         view.endEditing(true)
     }
     
+
+    
     @IBAction func tarifYukleButton(_ sender: Any) {
         
-     
-        let storage = Storage.storage()
         let storageReference = storage.reference()
         let mediaFolder = storageReference.child("yemekResimMedia")
+       
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+       
+        db.collection("kullanicilar").document(uid).getDocument { document, error in
+         
+            if let document = document, document.exists {
+                let data = document.data()
+                self.kullaniciAd = data?["kullaniciAd"] as? String ?? ""
+                
+            } else {
+                print("Hata")
+            }
+        }
+       
+        
+        
+        
+        
         
         if let data = yemekResim.image?.jpegData(compressionQuality: 0.5) {
             let uuid = UUID().uuidString
@@ -95,7 +121,7 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
                     imageReference.downloadURL { (url, error) in
                         if error == nil {
                             let yemekUrl = url?.absoluteString
-                            let firestoreDatabase = Firestore.firestore()
+                           
                             let yemekKaydet = [ "yemekTarih": FieldValue.serverTimestamp(),
                                                 "yemekResim": yemekUrl!,
                                                 "yemekId": "",
@@ -107,11 +133,11 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
                                                 "yemekPisirmeSuresi": self.yemekPisirmeSuresi.text!,
                                                 "yemekMalzemeler" : self.yemekMalzemeler.text!,
                                                 "kategori" : self.kategoriSec.text!,
-                                                "kullaniciEmail": Auth.auth().currentUser!.email!,
+                                                "kullaniciAd": self.kullaniciAd,
                                                 "kullaniciUid": Auth.auth().currentUser!.uid] as [String : Any]
                             
                             var firestoreReference : DocumentReference? = nil
-                                firestoreReference = firestoreDatabase.collection("yemekler").addDocument(data: yemekKaydet, completion: { (error) in
+                            firestoreReference = self.db.collection("yemekler").addDocument(data: yemekKaydet, completion: { (error) in
                                 if error != nil {
                                     self.makeAlert(titleInput: "Hata!", messageInput: error?.localizedDescription ?? "Hata!", button: "TAMAM")
                                 } else {

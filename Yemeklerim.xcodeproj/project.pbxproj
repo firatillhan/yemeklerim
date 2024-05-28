@@ -19,8 +19,6 @@
 		3A0961792BD8DF29000BE82A /* TarifYukleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961782BD8DF29000BE82A /* TarifYukleVC.swift */; };
 		3A09617B2BD8DF6E000BE82A /* ProfilVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09617A2BD8DF6E000BE82A /* ProfilVC.swift */; };
 		3A09617D2BD8DF9A000BE82A /* TarifDetayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09617C2BD8DF9A000BE82A /* TarifDetayVC.swift */; };
-		3A0961832BD8E50F000BE82A /* Kategoriler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961822BD8E50F000BE82A /* Kategoriler.swift */; };
-		3A0961852BD8E548000BE82A /* Kullanicilar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961842BD8E548000BE82A /* Kullanicilar.swift */; };
 		3A0961892BD8E59E000BE82A /* Yemekler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961882BD8E59E000BE82A /* Yemekler.swift */; };
 		3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618C2BD8E65B000BE82A /* Alert.swift */; };
 		3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */; };
@@ -28,7 +26,7 @@
 		3A72338C2BF40EB100AB8885 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A72338B2BF40EB100AB8885 /* GoogleService-Info.plist */; };
 		3AFA37CE2BDD515E00BD21E7 /* ProfilCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */; };
 		3AFA37D82BE16FDC00BD21E7 /* ProfilDuzenleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */; };
-		3AFB9B762BFF2BA300F27259 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB9B752BFF2BA300F27259 /* File.swift */; };
+		3AFB9B782BFF5F2E00F27259 /* TarifGuncelleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB9B772BFF5F2E00F27259 /* TarifGuncelleVC.swift */; };
 		4DEDB6198CD11EE023ACBFBD /* Pods_Yemeklerim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E4F437F3B2DF4E39717FE8E /* Pods_Yemeklerim.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +46,6 @@
 		3A0961782BD8DF29000BE82A /* TarifYukleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifYukleVC.swift; sourceTree = "<group>"; };
 		3A09617A2BD8DF6E000BE82A /* ProfilVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilVC.swift; sourceTree = "<group>"; };
 		3A09617C2BD8DF9A000BE82A /* TarifDetayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifDetayVC.swift; sourceTree = "<group>"; };
-		3A0961822BD8E50F000BE82A /* Kategoriler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategoriler.swift; sourceTree = "<group>"; };
-		3A0961842BD8E548000BE82A /* Kullanicilar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kullanicilar.swift; sourceTree = "<group>"; };
 		3A0961882BD8E59E000BE82A /* Yemekler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yemekler.swift; sourceTree = "<group>"; };
 		3A09618C2BD8E65B000BE82A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnasayfaCollectionVC.swift; sourceTree = "<group>"; };
@@ -57,7 +53,7 @@
 		3A72338B2BF40EB100AB8885 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCollectionVC.swift; sourceTree = "<group>"; };
 		3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilDuzenleVC.swift; sourceTree = "<group>"; };
-		3AFB9B752BFF2BA300F27259 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		3AFB9B772BFF5F2E00F27259 /* TarifGuncelleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifGuncelleVC.swift; sourceTree = "<group>"; };
 		563336EAF639548D32D4A4AF /* Pods-Yemeklerim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yemeklerim.release.xcconfig"; path = "Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim.release.xcconfig"; sourceTree = "<group>"; };
 		9E4F437F3B2DF4E39717FE8E /* Pods_Yemeklerim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yemeklerim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,18 +102,16 @@
 				3A0961782BD8DF29000BE82A /* TarifYukleVC.swift */,
 				3A09617A2BD8DF6E000BE82A /* ProfilVC.swift */,
 				3A09617C2BD8DF9A000BE82A /* TarifDetayVC.swift */,
+				3AFB9B772BFF5F2E00F27259 /* TarifGuncelleVC.swift */,
 				3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */,
 				3A0961642BD846F6000BE82A /* Main.storyboard */,
 				3A0961692BD846F8000BE82A /* LaunchScreen.storyboard */,
 				3A0961672BD846F8000BE82A /* Assets.xcassets */,
-				3A0961822BD8E50F000BE82A /* Kategoriler.swift */,
-				3A0961842BD8E548000BE82A /* Kullanicilar.swift */,
 				3A0961882BD8E59E000BE82A /* Yemekler.swift */,
 				3A09618C2BD8E65B000BE82A /* Alert.swift */,
 				3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */,
 				3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */,
 				3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */,
-				3AFB9B752BFF2BA300F27259 /* File.swift */,
 			);
 			path = Yemeklerim;
 			sourceTree = "<group>";
@@ -261,12 +255,10 @@
 				3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */,
 				3A0961732BD8DDEF000BE82A /* KayitOlVC.swift in Sources */,
 				3A0961632BD846F6000BE82A /* GirisYapVC.swift in Sources */,
+				3AFB9B782BFF5F2E00F27259 /* TarifGuncelleVC.swift in Sources */,
 				3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */,
-				3AFB9B762BFF2BA300F27259 /* File.swift in Sources */,
 				3A0961772BD8DF05000BE82A /* TarifDefteriVC.swift in Sources */,
 				3A09615F2BD846F6000BE82A /* AppDelegate.swift in Sources */,
-				3A0961832BD8E50F000BE82A /* Kategoriler.swift in Sources */,
-				3A0961852BD8E548000BE82A /* Kullanicilar.swift in Sources */,
 				3A0961892BD8E59E000BE82A /* Yemekler.swift in Sources */,
 				3A09617B2BD8DF6E000BE82A /* ProfilVC.swift in Sources */,
 				3AFA37D82BE16FDC00BD21E7 /* ProfilDuzenleVC.swift in Sources */,

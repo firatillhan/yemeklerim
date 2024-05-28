@@ -14,7 +14,6 @@ class ProfilDuzenleVC: UIViewController, UIImagePickerControllerDelegate, UINavi
 
     @IBOutlet weak var kullaniciResim: UIImageView!
     @IBOutlet weak var kullaniciAd: UITextField!
-  
     @IBOutlet weak var kullaniciAdSoyad: UITextField!
     @IBOutlet weak var kullaniciAciklama: UITextField!
     
@@ -27,13 +26,14 @@ class ProfilDuzenleVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        kullaniciAd.isEnabled = false
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.topItem?.title = "Profilini Düzenle"
 
-        GetUserData()
+        kullaniciCek()
         kullaniciResim.layer.cornerRadius = kullaniciResim.frame.width / 2
         kullaniciResim.clipsToBounds = true
-  //      kullaniciResim.layer.cornerRadius = CGRectGetWidth(self.kullaniciResim.frame) / 2
+  
 
         
         let gestureRecognizerKlavye = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -64,7 +64,7 @@ class ProfilDuzenleVC: UIViewController, UIImagePickerControllerDelegate, UINavi
        }
 
     
-    func GetUserData(){
+    func kullaniciCek(){
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
         db.collection("kullanicilar").document(uid).getDocument { document, error in
@@ -131,33 +131,37 @@ class ProfilDuzenleVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     }
     
     @IBAction func profilKaydet(_ sender: Any) {
+        kullaniciGuncelle()
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-             guard let kullaniciAdSoyad = kullaniciAdSoyad.text, !kullaniciAdSoyad.isEmpty,
-                   let kullaniciAd = kullaniciAd.text, !kullaniciAd.isEmpty,
-                   let kullaniciAciklama = kullaniciAciklama.text, !kullaniciAciklama.isEmpty else {
-                 print("Please fill in all fields")
-                 return
-             }
-
-             let userData: [String: Any] = [
-                 "kullaniciAdSoyad": kullaniciAdSoyad,
-                 "kullaniciAd": kullaniciAd,
-                 "kullaniciAciklama": kullaniciAciklama
-             ]
-
-             db.collection("kullanicilar").document(uid).updateData(userData) { error in
-                 if let error = error {
-                     print("Error updating user data: \(error.localizedDescription)")
-                 } else {
-                     self.makeAlert(titleInput: "Tebrikler", messageInput: "Profiliniz Güncellendi", button: "Tamam")
-                 }
-             }
-        
-        
-    
     }
     
     
+    func kullaniciGuncelle(){
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+                let userData: [String: Any] = [
+                    "kullaniciAdSoyad": kullaniciAdSoyad.text ?? "",
+                    "kullaniciAciklama": kullaniciAciklama.text ?? ""
+                ]
+                self.db.collection("kullanicilar").document(uid).updateData(userData) { error in
+                    if let error = error {
+                        self.makeAlert(titleInput: "Hata", messageInput: error.localizedDescription, button: "TAMAM")
+                    } else {
+                        self.makeAlert(titleInput: "Tebrikler", messageInput: "Profiliniz Güncellendi", button: "Tamam")
+                    }
+                }
+        }
+    }
     
-}
+    
+
+
+
+
+
+
+
+
+
+

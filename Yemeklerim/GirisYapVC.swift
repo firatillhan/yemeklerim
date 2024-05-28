@@ -29,7 +29,7 @@ class GirisYapVC: UIViewController {
 
 
     @IBAction func girisYapButton(_ sender: Any) {
-        if userEmailLabel.text != "" && userPasswordLabel.text != nil {
+        if userEmailLabel.text != "" && userPasswordLabel.text != "" {
             Auth.auth().signIn(withEmail: userEmailLabel.text!, password: userPasswordLabel.text!) { (authdata, error) in
                 if error != nil {
                 self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "Error", button: "Tamam")
@@ -38,8 +38,14 @@ class GirisYapVC: UIViewController {
                 }
             }
         }else {
-            makeAlert(titleInput: "Hata", messageInput: "Email/Şifre hata", button: "Tamam")
+            makeAlert(titleInput: "Hata", messageInput: "Email/Şifre boş olamaz!!", button: "Tamam")
         }
     }
 }
+
+
+
+
+
+
 

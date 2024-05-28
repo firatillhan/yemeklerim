@@ -36,11 +36,11 @@ class ProfilVC: UIViewController {
         userData()
         
         navigationController?.navigationBar.topItem?.title = kullanici.email!
-
+        self.tarifSayisiLabel.text = "0"
         // UILabel oluşturma
         emptyMessageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
         emptyMessageLabel.text = "Henüz tarif yüklemediniz"
-        self.tarifSayisiLabel.text = "0"
+        
         emptyMessageLabel.textColor = .gray
         emptyMessageLabel.textAlignment = .center
         emptyMessageLabel.font = UIFont.systemFont(ofSize: 20)
@@ -62,7 +62,7 @@ class ProfilVC: UIViewController {
     
     func yemekSayisiCek() {
         let db = Firestore.firestore()
-        let sorgu = db.collection("yemekler").whereField("kullaniciEmail", isEqualTo: kullanici.email!)
+        let sorgu = db.collection("yemekler").whereField("kullaniciUid", isEqualTo: kullanici.uid)
         sorgu.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
@@ -117,7 +117,7 @@ class ProfilVC: UIViewController {
     
     func yemekleriGetir(){
         let fireStoreDatabase = Firestore.firestore()
-        let sorgu = fireStoreDatabase.collection("yemekler").whereField("kullaniciEmail", isEqualTo: kullanici.email!)
+        let sorgu = fireStoreDatabase.collection("yemekler").whereField("kullaniciUid", isEqualTo: kullanici.uid)
         sorgu.addSnapshotListener { (snapshot,error) in
             if error != nil {
                 self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata", button: "TAMAM")
@@ -138,9 +138,10 @@ class ProfilVC: UIViewController {
                         let yemekMalzemeler = document.get("yemekMalzemeler") as? String
                         let kategori = document.get("kategori") as? String
                         let kullaniciUid = document.get("kullaniciUid") as? String
-                        let kullaniciEmail = document.get("kullaniciEmail") as? String
+                        let kullaniciAd = document.get("kullaniciAd") as? String
                         
-                        let yemek = Yemekler(yemekId: documentID, yemekAd: yemekAd!, yemekKisiSayisi: yemekKisiSayisi!, yemekAciklama: yemekAciklama!, yemekHazirlikSuresi: yemekHazirlikSuresi!, yemekTarif: yemekTarif!, yemekResim: yemekResim!, yemekPisirmeSuresi: yemekPisirmeSuresi!, yemekMalzemeler: yemekMalzemeler!, kategori: kategori!, kullaniciUid: kullaniciUid!, kullaniciEmail: kullaniciEmail!)
+                        let yemek = Yemekler(yemekId: documentID, yemekAd: yemekAd!, yemekKisiSayisi: yemekKisiSayisi!, yemekAciklama: yemekAciklama!, yemekHazirlikSuresi: yemekHazirlikSuresi!, yemekTarif: yemekTarif!, yemekResim: yemekResim!, yemekPisirmeSuresi: yemekPisirmeSuresi!, yemekMalzemeler: yemekMalzemeler!, kategori: kategori!, kullaniciUid: kullaniciUid!, kullaniciAd: kullaniciAd!)
+                        
                         self.yemekListesi.append(yemek)
                     }
                     self.collectionView.reloadData()
@@ -150,24 +151,14 @@ class ProfilVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            
+        
         if segue.identifier == "profilToDetay" {
-            
             if let destinationVC = segue.destination as? TarifDetayVC {
                 let indeks = sender as? Int
                 destinationVC.yemek = yemekListesi[indeks!]
-                
-            }
-        } else if segue.identifier == "profilDuzenle" {
-            if let destinationVC = segue.destination as? ProfilDuzenleVC {
-
             }
         }
-        
-        
-        
-        
-        }
+    }
 
     
     func yemeklerCVTasarim() {
@@ -188,9 +179,7 @@ class ProfilVC: UIViewController {
                 collectionView.collectionViewLayout = tasarim
         }
 
-    @IBAction func profilDuzenleButton(_ sender: Any) {
-        performSegue(withIdentifier: "profilDuzenle", sender: nil)
-    }
+ 
     
     @IBAction func logOutButton(_ sender: Any) {
         do {

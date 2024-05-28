@@ -20,7 +20,8 @@ class Yemekler:Codable{
     var yemekPisirmeSuresi:String?
     var yemekMalzemeler:String?
     var kullaniciUid:String?
-    var kullaniciEmail:String?
+    var kullaniciAd:String?
+    
     
     var kategori:String?
   
@@ -30,7 +31,7 @@ class Yemekler:Codable{
     init(){
         
     }
-    init(yemekId:String,yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:String,kullaniciUid:String,kullaniciEmail:String) {
+    init(yemekId:String,yemekAd:String,yemekKisiSayisi:String,yemekAciklama:String,yemekHazirlikSuresi:String,yemekTarif:String,yemekResim:String,yemekPisirmeSuresi:String,yemekMalzemeler:String,kategori:String,kullaniciUid:String,kullaniciAd:String) {
        
         self.yemekId = yemekId
         self.yemekAd = yemekAd
@@ -43,6 +44,6 @@ class Yemekler:Codable{
         self.yemekMalzemeler = yemekMalzemeler
         self.kategori = kategori
         self.kullaniciUid = kullaniciUid
-        self.kullaniciEmail = kullaniciEmail
+        self.kullaniciAd = kullaniciAd
     }
 }
