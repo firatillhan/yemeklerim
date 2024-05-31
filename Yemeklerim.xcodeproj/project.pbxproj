@@ -23,7 +23,6 @@
 		3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618C2BD8E65B000BE82A /* Alert.swift */; };
 		3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */; };
 		3A0961912BD93F74000BE82A /* TarifDefteriTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */; };
-		3A66BF282C085CEE0059FE0B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66BF272C085CEE0059FE0B /* File.swift */; };
 		3A72338C2BF40EB100AB8885 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A72338B2BF40EB100AB8885 /* GoogleService-Info.plist */; };
 		3AFA37CE2BDD515E00BD21E7 /* ProfilCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */; };
 		3AFA37D82BE16FDC00BD21E7 /* ProfilDuzenleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */; };
@@ -52,7 +51,6 @@
 		3A09618C2BD8E65B000BE82A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnasayfaCollectionVC.swift; sourceTree = "<group>"; };
 		3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifDefteriTableVC.swift; sourceTree = "<group>"; };
-		3A66BF272C085CEE0059FE0B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		3A72338B2BF40EB100AB8885 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCollectionVC.swift; sourceTree = "<group>"; };
 		3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilDuzenleVC.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */,
 				3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */,
 				3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */,
-				3A66BF272C085CEE0059FE0B /* File.swift */,
 			);
 			path = Yemeklerim;
 			sourceTree = "<group>";
@@ -262,7 +259,6 @@
 				3A0961732BD8DDEF000BE82A /* KayitOlVC.swift in Sources */,
 				3A0961632BD846F6000BE82A /* GirisYapVC.swift in Sources */,
 				3AFB9B782BFF5F2E00F27259 /* TarifGuncelleVC.swift in Sources */,
-				3A66BF282C085CEE0059FE0B /* File.swift in Sources */,
 				3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */,
 				3A0961772BD8DF05000BE82A /* TarifDefteriVC.swift in Sources */,
 				3A09615F2BD846F6000BE82A /* AppDelegate.swift in Sources */,
