@@ -14,82 +14,69 @@ class AnasayfaVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var yemekListesi = [Yemekler]()
-    let kullanici = Auth.auth().currentUser!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         yemeklerCVTasarim()
-        yemekleriGetir()
         collectionView.delegate = self
         collectionView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        yemekleriGetir()
+        yemekleriCek()
     }
-    func yemekleriGetir(){
-        let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("yemekler").order(by: "yemekTarih", descending: true).addSnapshotListener { (snapshot,error) in
-            if error != nil {
-                self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata", button: "TAMAM")
-            } else {
+    
+    func yemekleriCek(){
+        let db = Firestore.firestore()
+        db.collection("yemekler").order(by: "yemekTarih", descending: true).addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                self.makeAlert(titleInput: "Hata", messageInput: error.localizedDescription, button: "TAMAM")
+                print("Error: \(error)")
+            }
+            else {
                 if snapshot?.isEmpty != true && snapshot != nil {
+                    let group = DispatchGroup()
                     self.yemekListesi.removeAll(keepingCapacity: false)
-                    
-                    for document in snapshot!.documents {
-                        let documentID = document.documentID
-
-                        let yemekAd = document.get("yemekAd") as? String
-                        let yemekKisiSayisi = document.get("yemekKisiSayisi") as? String
-                        let yemekAciklama = document.get("yemekAciklama") as? String
-                        let yemekHazirlikSuresi = document.get("yemekHazirlikSuresi") as? String
-                        let yemekTarif = document.get("yemekTarif") as? String
-                        let yemekResim = document.get("yemekResim") as? String
-                        let yemekPisirmeSuresi = document.get("yemekPisirmeSuresi") as? String
-                        let yemekMalzemeler = document.get("yemekMalzemeler") as? String
-                        let kategori = document.get("kategori") as? String
-                        let kullaniciUid = document.get("kullaniciUid") as? String
-                        let kullaniciAd = document.get("kullaniciAd") as? String
-                    
-                        let yemek = Yemekler(yemekId: documentID, yemekAd: yemekAd!, yemekKisiSayisi: yemekKisiSayisi!, yemekAciklama: yemekAciklama!, yemekHazirlikSuresi: yemekHazirlikSuresi!, yemekTarif: yemekTarif!, yemekResim: yemekResim!, yemekPisirmeSuresi: yemekPisirmeSuresi!, yemekMalzemeler: yemekMalzemeler!, kategori: kategori!, kullaniciUid: kullaniciUid!,kullaniciAd:kullaniciAd ?? "kullanıcı adı boş")
-                        
-                        self.yemekListesi.append(yemek)
+                    for documentOne in snapshot!.documents {
+                        let data = documentOne.data()
+                        let yemekId = documentOne.documentID
+                        let kullaniciUid = data["kullaniciUid"] as? String ?? "kullanici Uid"
+                        let yemekAd = data["yemekAd"] as? String ?? "yemek Ad"
+                        let yemekResim = data["yemekResim"] as? String ?? ""
+                        let kategori = data["kategori"] as? String ?? ""
+                        let yemekAciklama = data["yemekAciklama"] as? String ?? ""
+                        let yemekHazirlikSuresi = data["yemekHazirlikSuresi"] as? String ?? ""
+                        let yemekKisiSayisi = data["yemekKisiSayisi"] as? String ?? ""
+                        let yemekMalzemeler = data["yemekMalzemeler"] as? String ?? ""
+                        let yemekPisirmeSuresi = data["yemekPisirmeSuresi"] as? String ?? ""
+                        let yemekTarif = data["yemekTarif"] as? String ?? ""
+                        group.enter()
+                        db.collection("kullanicilar").document(kullaniciUid).getDocument { (document, error) in
+                            if let error = error {
+                                print("hata \(error)")
+                            } else {
+                                let kullaniciAd = document?.data()?["kullaniciAd"] as? String ?? "kullaniciAd"
+                                let yemek = Yemekler(yemekId: yemekId,kullaniciUid: kullaniciUid,yemekAd: yemekAd,kullaniciAd: kullaniciAd,yemekResim: yemekResim,kategori: kategori,yemekAciklama: yemekAciklama,yemekHazirlikSuresi: yemekHazirlikSuresi,yemekKisiSayisi: yemekKisiSayisi,yemekMalzemeler: yemekMalzemeler,yemekPisirmeSuresi: yemekPisirmeSuresi, yemekTarif: yemekTarif)
+                                self.yemekListesi.append(yemek)
+                            }
+                            group.leave()
+                            self.collectionView.reloadData()
+                        }
                     }
                     self.collectionView.reloadData()
                 }
             }
         }
     }
-  
-    
-    func yemeklerCVTasarim() {
-        let tasarim :UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-                let genislik = self.collectionView.frame.size.width
-                tasarim.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-                let hucreGenislik = (genislik-30)/2
-                tasarim.itemSize = CGSize(width: hucreGenislik, height: hucreGenislik*1.7)
-                tasarim.minimumInteritemSpacing = 10
-                tasarim.minimumLineSpacing = 10
-                collectionView.collectionViewLayout = tasarim
-        }
     
 
     
-    
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            
         let indeks = sender as? Int
             let gidilecekVC = segue.destination as! TarifDetayVC
             gidilecekVC.yemek = yemekListesi[indeks!]
         }
-    
-    
-    
-    
-   
 }
+
 extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return yemekListesi.count
@@ -103,7 +90,7 @@ extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnasayfaCell", for: indexPath) as! AnasayfaCollectionVC
         cell.yemekAd.text = yemek.yemekAd
         cell.kullaniciAd.text = yemek.kullaniciAd
-        cell.yemekResim.sd_setImage(with: URL(string: yemek.yemekResim!))
+        cell.yemekResim.sd_setImage(with: URL(string: yemek.yemekResim))
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -118,6 +105,17 @@ extension AnasayfaVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 
 
 
-
+extension AnasayfaVC {
+    func yemeklerCVTasarim() {
+        let tasarim :UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+                let genislik = self.collectionView.frame.size.width
+                tasarim.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+                let hucreGenislik = (genislik-30)/2
+                tasarim.itemSize = CGSize(width: hucreGenislik, height: hucreGenislik*1.7)
+                tasarim.minimumInteritemSpacing = 10
+                tasarim.minimumLineSpacing = 10
+                collectionView.collectionViewLayout = tasarim
+        }
+}
 
 

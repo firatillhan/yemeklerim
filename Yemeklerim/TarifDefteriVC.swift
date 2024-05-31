@@ -10,24 +10,19 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class TarifDefteriVC: UIViewController {
-
-    var begeniIdArray = [String]()
-    var kullaniciAdArray = [String]()
-    var kullaniciUidArray = [String]()
-    var yemekIdArray = [String]()
-    var yemekAdArray = [String]()
     
-    var gonderilenYemeId = String()
-
-    var emptyMessageLabel: UILabel!
-
-    
-    let db = Firestore.firestore()
+    var begeniListesi = [Favoriler]()
     let kullanici = Auth.auth().currentUser!
-    var silinecekBegeniId = String()
     
- 
-   
+    
+    var gonderilenYemekId = String()
+    var emptyMessageLabel: UILabel!
+    let db = Firestore.firestore()
+    
+    var begeniId = String()
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -36,12 +31,10 @@ class TarifDefteriVC: UIViewController {
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        favoriyemekleriGetir()
-        favoriSayisiCek()
-        bosLabel()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
-       print("view will appear çalıştı")
+        print("tarifDefteri vc view will appear çalıştı")
         favoriyemekleriGetir()
         favoriSayisiCek()
         bosLabel()
@@ -52,12 +45,11 @@ class TarifDefteriVC: UIViewController {
         emptyMessageLabel.textColor = .gray
         emptyMessageLabel.textAlignment = .center
         emptyMessageLabel.font = UIFont.systemFont(ofSize: 20)
-        
         tableView.backgroundView = emptyMessageLabel
     }
     func favoriSayisiCek() {
         //favori sayısı 0 ise ekrana henüz yemek tarifi beğenmediniz yazısı gelecek.
-       
+        
         let sorgu = db.collection("begeniler").whereField("kullaniciUid", isEqualTo: kullanici.uid)
         sorgu.getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -79,12 +71,12 @@ class TarifDefteriVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-        if segue.identifier == "favoriToDetay" {
-            let destinationVC = segue.destination as! TarifDetayVC
-            destinationVC.gelenYemekId = gonderilenYemeId
-            }
-        }
+        
+        let indeks = sender as? Int
+        let gidilecekVC = segue.destination as! TarifDetayVC
+        gidilecekVC.favori = begeniListesi[indeks!]
+    
+}
     
     
 
@@ -96,21 +88,31 @@ class TarifDefteriVC: UIViewController {
                 self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "Hata", button: "TAMAM")
             } else {
                 if snapshot?.isEmpty != true && snapshot != nil {
-                    self.begeniIdArray.removeAll(keepingCapacity: false)
-                    self.yemekIdArray.removeAll(keepingCapacity: false)
-                    self.yemekAdArray.removeAll(keepingCapacity: false)
+                    let group = DispatchGroup()
+                    self.begeniListesi.removeAll(keepingCapacity: false)
 
                     for document in snapshot!.documents {
-                        let documentID = document.documentID
-                        self.begeniIdArray.append(documentID)
+                        let data = document.data()
                         
-                        if let yemekAd = document.get("yemekAd") as? String {
-                            self.yemekAdArray.append(yemekAd)
+                        let begeniId = document.documentID
+                        let yemekId = data["yemekId"] as? String ?? ""
+                        let kullaniciUid = data["kullaniciUid"] as? String ?? ""
+                        
+                        group.enter()
+                        self.db.collection("yemekler").document(yemekId).getDocument { document, error in
+                            if let error = error {
+                                print("Error \(error)")
+                            } else {
+                                let yemekAd = document?.data()?["yemekAd"] as? String ?? "yemekAd"
+                                 let begeni = Favoriler(begeniId: begeniId, kullaniciUid: kullaniciUid, yemekId: yemekId, yemekAd: yemekAd)
+
+                                 self.begeniListesi.append(begeni)
+                            }
+                            group.leave()
+                            self.tableView.reloadData()
                         }
-                        if let yemekId = document.get("yemekId") as? String {
-                            self.yemekIdArray.append(yemekId)
+
                             
-                        }
                     }
                     self.tableView.reloadData()
                 }
@@ -119,17 +121,15 @@ class TarifDefteriVC: UIViewController {
     }
 
     func begeniSil(begeniId:String){
-        print("silinecek beğeni id: \(self.silinecekBegeniId)")
+        print("silinecek beğeni id: \(self.begeniId)")
         
-        db.collection("begeniler").document(silinecekBegeniId).delete { error in
+        db.collection("begeniler").document(begeniId).delete { error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
                 //self.Alert(titleInput: "Tebrikler", messageInput: "Başarılı bir şekilde begenilerden çıkarıldı!", button: "TAMAM")
                 self.Alert(titleInput: "UYARI", messageInput: "Beğendiğiniz tarif listenizden çıkarıldı", button: "Tamam")
-                self.begeniIdArray.removeAll(keepingCapacity: false)
-                self.yemekIdArray.removeAll(keepingCapacity: false)
-                self.yemekAdArray.removeAll(keepingCapacity: false)
+                self.begeniListesi.removeAll(keepingCapacity: false)
                 self.tableView.reloadData()
                 self.viewWillAppear(true)
             }
@@ -156,33 +156,40 @@ class TarifDefteriVC: UIViewController {
 }
 extension TarifDefteriVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return yemekIdArray.count
+        return begeniListesi.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        let begeni = begeniListesi[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriCell", for: indexPath) as! TarifDefteriTableVC
-        cell.favoriTarifAdLabel.text = yemekAdArray[indexPath.row]
-        cell.favoriTarifYemekIdLabel.text = yemekIdArray[indexPath.row]
+        cell.favoriTarifAdLabel.text = begeni.yemekAd
+        cell.favoriTarifYemekIdLabel.text = begeni.yemekId
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        gonderilenYemeId = yemekIdArray[indexPath.row]
         self.performSegue(withIdentifier: "favoriToDetay", sender: indexPath.row)
-       
-       
-
-
     }
-  
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let silAction = UIContextualAction(style: .destructive, title: "Sil") {
-                 (contextualAction, view, boolValue) in
-            self.silinecekBegeniId = self.begeniIdArray[indexPath.row]
-            self.begeniSil(begeniId:self.silinecekBegeniId)
-             }
-             return UISwipeActionsConfiguration(actions: [silAction])
-         }
+            (contextualAction, view, boolValue) in
+   
+            let begeni = self.begeniListesi[indexPath.row]
+            self.begeniSil(begeniId: begeni.begeniId)
+            self.makeAlert(titleInput: "Tebrikler", messageInput: "Tarif Listenizden Çıkarıldı", button: "TAMAM")
+        }
+        
+        return UISwipeActionsConfiguration(actions: [silAction])
+
+    }
+    
+    
+    
+
+  
+
+    
+
+    
    
 }

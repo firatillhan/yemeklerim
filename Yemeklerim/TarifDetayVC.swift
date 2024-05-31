@@ -4,6 +4,8 @@
 //
 //  Created by Fırat İlhan on 24.04.2024.
 //
+//Not: tarif sil butonuna basıldığında begeniler collection'undaki bütün yemekIdler kontrol edilip silinmesi gerekli. şimdilik sadece 1 tanesi siliniyor. döngü kullan.
+
 
 import UIKit
 import FirebaseFirestore
@@ -12,9 +14,7 @@ import SDWebImage
 
 class TarifDetayVC: UIViewController {
     
-    var yemek:Yemekler?
     
-    var kullaniciAdCek = String()
     
     @IBOutlet weak var yemekResim: UIImageView!
     @IBOutlet weak var kullaniciAd: UILabel!
@@ -26,12 +26,13 @@ class TarifDetayVC: UIViewController {
     @IBOutlet weak var yemekTarif: UILabel!
     @IBOutlet weak var yemekAdLabel: UILabel!
     
+    var yemek:Yemekler?
+    var favori:Favoriler?
+    
     var yemekId = String()
-    var gelenYemekId = String()
-    var yemekAd = String()
     var kullanici = Auth.auth().currentUser!
-    var gelenKullaniciAdi = String()
-    var kullaniciUid = String()
+    var favYemekId = String()
+  
     let db = Firestore.firestore()
     
     @IBOutlet weak var tarifDuzenleButtonLabel: UIBarButtonItem!
@@ -39,29 +40,21 @@ class TarifDetayVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       kullaniciCek()
-
-        // Do any additional setup after loading the view.
-        if gelenYemekId != "" {
-            favoriYemekDetay(yemekId: gelenYemekId)
-        }
-       
-        if let y = yemek{
-            navigationItem.title = "Kategori: \(y.kategori!)"
-            
-            yemekAdLabel.text = y.yemekAd // kategoriLabel ismi yemekAd olarak değiştirilecek
-            yemekAd = y.yemekAd!
-            
-            yemekKisiSayisi.text = "\(y.yemekKisiSayisi!) Kişilik"
-            yemekHazirlikSuresi.text = "Hazırlık: \(y.yemekHazirlikSuresi!)"
-            yemekPisirmeSuresi.text = "Pişirme: \(y.yemekPisirmeSuresi!)"
+        
+        if let y = yemek {
+            yemekId = y.yemekId //yemek sil için
+            navigationItem.title = "Kategori: \(y.kategori)"
+            kullaniciAd.text = y.kullaniciAd
+            let kullaniciUid = y.kullaniciUid
             yemekAciklama.text = y.yemekAciklama
+            yemekAdLabel.text = y.yemekAd
+            yemekHazirlikSuresi.text = "Hazırlık: \(y.yemekHazirlikSuresi)"
+            yemekKisiSayisi.text = "\(y.yemekKisiSayisi) Kişilik"
             yemekMalzemeler.text = y.yemekMalzemeler
+            yemekPisirmeSuresi.text = "Pişirme: \(y.yemekPisirmeSuresi)"
+            yemekResim.sd_setImage(with: URL(string: y.yemekResim))
             yemekTarif.text = y.yemekTarif
-            gelenKullaniciAdi = y.kullaniciAd!
-            kullaniciAd.text = gelenKullaniciAdi
-            kullaniciUid = y.kullaniciUid!
-            
+
             if kullaniciUid == kullanici.uid {
                 tarifDuzenleButtonLabel.isHidden = false
                 tarifSilButtonLabel.isHidden = false
@@ -69,96 +62,82 @@ class TarifDetayVC: UIViewController {
                 tarifDuzenleButtonLabel.isHidden = true
                 tarifSilButtonLabel.isHidden = true
             }
+        }
+        
+        if let f = favori {
+            yemekId = f.yemekId
+            print("yemekId: \(yemekId)")
+            yemekleriCek(yemekId: yemekId)
             
-            
-            
-            yemekId = y.yemekId!
-         
-            if let resimUrl = y.yemekResim {
-                yemekResim.sd_setImage(with: URL(string: resimUrl))
-            }
-        }
-    }
-    func kullaniciCek(){
-        db.collection("kullanicilar").document(kullanici.uid).getDocument { document, error in
-         
-            if let document = document, document.exists {
-                let data = document.data()
-                self.kullaniciAdCek = data?["kullaniciAd"] as? String ?? ""
-                print("kullancıcı ad: \(self.kullaniciAdCek)")
-            } else {
-                print("Hata")
-            }
         }
         
-    }
-    func favoriYemekDetay(yemekId:String){
         
-        if kullaniciUid == kullanici.uid {
-            tarifDuzenleButtonLabel.isHidden = false
-            tarifSilButtonLabel.isHidden = false
-        } else {
-            tarifDuzenleButtonLabel.isHidden = true
-            tarifSilButtonLabel.isHidden = true
-        }
-        
-        db.collection("yemekler").document(gelenYemekId).getDocument { [self] (document, error) in
-            
-            if let document = document, document.exists {
-        
-                let data = document.data()
-                let kategoriAd = data?["kategori"] as? String ?? ""
-                self.navigationItem.title = "Kategori: \(kategoriAd)"
-                gelenKullaniciAdi = data?["kullaniciAd"] as? String ?? ""
-                self.kullaniciAd.text = gelenKullaniciAdi
-                self.yemekAciklama.text = data?["yemekAciklama"] as? String ?? ""
-                yemekAd = data?["yemekAd"] as? String ?? ""
-                self.yemekAdLabel.text = yemekAd
-                self.yemekMalzemeler.text = data?["yemekMalzemeler"] as? String ?? ""
-                self.yemekId = gelenYemekId //yemekId bilgisi çekilip değişkene aktarılıyor. ancak kullanıcı arayüzünde gösterilmeyecek.
-                print("şuan gösterilen yemeğin id si\(yemekId)")
-                self.yemekTarif.text = data?["yemekTarif"] as? String ?? ""
-                let yemekHazirlik = data?["yemekHazirlikSuresi"] as? String ?? ""
-                self.yemekHazirlikSuresi.text = "Hazırlık: \(yemekHazirlik)"
-                let yemekKisi = data?["yemekKisiSayisi"] as? String ?? ""
-                self.yemekKisiSayisi.text = "\(yemekKisi) Kişilik"
-                let yemekPisirme = data?["yemekPisirmeSuresi"] as? String ?? ""
-                self.yemekPisirmeSuresi.text = "Pişirme: \(yemekPisirme)"
-                
-                if let resimUrl = data?["yemekResim"] as! String? {
-                    yemekResim.sd_setImage(with: URL(string: resimUrl))
-                }
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "toTarifGuncelle" {
-            if let destinationVC = segue.destination as? TarifGuncelleVC {
-                //let indeks = sender as? Int
-                destinationVC.gelenYemekId = self.yemekId
-            }
-        }
-    }
-    
-    
-    @IBAction func tarifDuzenleButton(_ sender: Any) {
-       performSegue(withIdentifier: "toTarifGuncelleVC", sender: nil)
-        
-    }
-    
-    @IBAction func deftereEkleButton(_ sender: Any) {
-        
-        begenilereEkle(kullaniciAdCek: kullaniciAdCek, kullaniciUid: kullanici.uid, yemekId: yemekId,yemekAd:yemekAd)
+      
+
        
-        }
+        
+        
+    }
     
-    func begenilereEkle(kullaniciAdCek: String, kullaniciUid: String, yemekId: String, yemekAd: String) {
+    func yemekleriCek(yemekId:String){
+        
+        db.collection("yemekler").document(yemekId).getDocument { [self] document, error in
+         
+            if let document = document, document.exists {
+                let group = DispatchGroup()
+                let data = document.data()
+                let kategori = data?["kategori"] as? String ?? ""
+                navigationController?.navigationBar.topItem?.title = "Kategori: \(kategori)"
+                let kullaniciUid = data?["kullaniciUid"] as? String ?? "kullanici Uid"
+                yemekAdLabel.text = data?["yemekAd"] as? String ?? "yemek Ad"
+                yemekAciklama.text = data?["yemekAciklama"] as? String ?? ""
+                let yemekHazirlikSuresi = data?["yemekHazirlikSuresi"] as? String ?? ""
+                self.yemekHazirlikSuresi.text = "Hazırlık: \(yemekHazirlikSuresi)"
+                let yemekKisiSayisi = data?["yemekKisiSayisi"] as? String ?? ""
+                self.yemekKisiSayisi.text = "\(yemekKisiSayisi) Kişilik"
+                yemekMalzemeler.text = data?["yemekMalzemeler"] as? String ?? ""
+                let yemekPisirmeSuresi = data?["yemekPisirmeSuresi"] as? String ?? ""
+                self.yemekPisirmeSuresi.text = "Pişirme: \(yemekPisirmeSuresi)"
+                yemekTarif.text = data?["yemekTarif"] as? String ?? ""
+                
+                if kullaniciUid == kullanici.uid {
+                    self.tarifDuzenleButtonLabel.isHidden = false
+                    self.tarifSilButtonLabel.isHidden = false
+                } else {
+                    self.tarifDuzenleButtonLabel.isHidden = true
+                    self.tarifSilButtonLabel.isHidden = true
+                }
+                
+                if let yemekResim = document.data()?["yemekResim"] as? String,
+                    let url = URL(string: yemekResim) {
+                    self.yemekResim.sd_setImage(with: url, completed: nil)
+                }
+                group.enter()
+                self.db.collection("kullanicilar").document(kullaniciUid).getDocument { document, error in
+                    if let error = error {
+                        print("Hata \(error)")
+                    }else {
+                        if let document = document {
+                            let data = document.data()
+                            self.kullaniciAd.text = data?["kullaniciAd"] as? String ?? "kullaniciAd"
+                        }
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    
+    func begenilereEkle(kullaniciUid: String, yemekId: String) {
+        print("kullanici uid: \(kullaniciUid)")
+        print("yemekId: \(yemekId)")
+
        
         // Belirli bir dökümanı kontrol etme
         let begenilerRef = db.collection("begeniler")
-        let query = begenilerRef.whereField("kullaniciUid", isEqualTo: kullaniciUid).whereField("yemekId", isEqualTo: yemekId)
+        let query = begenilerRef.whereField("kullaniciUid", isEqualTo:kullaniciUid).whereField("yemekId", isEqualTo: yemekId)
         
         query.getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -170,21 +149,19 @@ class TarifDetayVC: UIViewController {
                 // Kullanıcının bu yemeği daha önce favorilere eklediğini belirten hata mesajı
                 self.makeAlert(titleInput: "Hata", messageInput: "Bu yemek zaten favorilerinizde mevcut.", button: "Tamam")
             } else {
-                if kullaniciAdCek != "" && kullaniciUid != "" && yemekId != "" && yemekAd != "" {
-                    // Belge ekleme işlemi
-                    var ref: DocumentReference? = nil
-                    ref = begenilerRef.addDocument(data: [
+                if kullaniciUid != "" && yemekId != ""{
+                    let begeniEkle: [String:Any] = [
                         "begeniId": "",
-                        "kullaniciAd": self.kullaniciAdCek,
                         "kullaniciUid": kullaniciUid,
-                        "yemekId": yemekId,
-                        "yemekAd": yemekAd,
+                        "yemekId": self.yemekId,
                         "timestamp": FieldValue.serverTimestamp()
-                    ]) { error in
+                    ]
+                    let database = Firestore.firestore()
+                    database.collection("begeniler").addDocument(data: begeniEkle) { error in
                         if let error = error {
-                            self.makeAlert(titleInput: "Hata", messageInput: error.localizedDescription, button: "Tamam")
+                            print("Error \(error)")
                         } else {
-                            self.makeAlert(titleInput: "Tebrikler", messageInput: "Tarif deftere eklendi", button: "Tamam")
+                            self.makeAlert(titleInput: "Tebrikler", messageInput: "Tarif başarılı bir şekilde listenize eklendi", button: "TAMAM")
                         }
                     }
                 } else {
@@ -193,14 +170,45 @@ class TarifDetayVC: UIViewController {
             }
         }
     }
+    
+    
 
+
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toTarifGuncelle" {
+            if let destinationVC = segue.destination as? TarifGuncelleVC {
+                destinationVC.gelenYemekId = self.yemekId
+            }
+        }
+    }
+    
+    
+    @IBAction func tarifDuzenleButton(_ sender: Any) {
+        performSegue(withIdentifier: "toTarifGuncelleVC", sender: nil)
+    }
+    
+    @IBAction func deftereEkleButton(_ sender: Any) {
+        begenilereEkle(kullaniciUid: kullanici.uid, yemekId: yemekId)
+    }
+    
+    
+    
     
     
     @IBAction func tarifSilButton(_ sender: Any) {
         print("silinecek yemek ıd : \(yemekId)")
         deleteYemekAndBegeniler(yemekId: yemekId)
     }
-    
+}
+
+
+
+
+
+extension TarifDetayVC {
     func deleteYemekAndBegeniler(yemekId: String) {
         
         let db = Firestore.firestore()
@@ -212,9 +220,6 @@ class TarifDetayVC: UIViewController {
             } else {
                 print("yemek silindi")
                 self.tabBarController?.selectedIndex = 0
-
-
-                
             }
         }
         
@@ -241,5 +246,7 @@ class TarifDetayVC: UIViewController {
             }
         }
         }// fonk bitiş
-    }
+    
+    
 
+}

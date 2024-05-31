@@ -91,24 +91,6 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
         
         let storageReference = storage.reference()
         let mediaFolder = storageReference.child("yemekResimMedia")
-       
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-       
-        db.collection("kullanicilar").document(uid).getDocument { document, error in
-         
-            if let document = document, document.exists {
-                let data = document.data()
-                self.kullaniciAd = data?["kullaniciAd"] as? String ?? ""
-                
-            } else {
-                print("Hata")
-            }
-        }
-       
-        
-        
-        
         
         
         if let data = yemekResim.image?.jpegData(compressionQuality: 0.5) {
@@ -133,11 +115,9 @@ class TarifYukleVC: UIViewController,UIPickerViewDelegate, UIPickerViewDataSourc
                                                 "yemekPisirmeSuresi": self.yemekPisirmeSuresi.text!,
                                                 "yemekMalzemeler" : self.yemekMalzemeler.text!,
                                                 "kategori" : self.kategoriSec.text!,
-                                                "kullaniciAd": self.kullaniciAd,
                                                 "kullaniciUid": Auth.auth().currentUser!.uid] as [String : Any]
-                            
-                            var firestoreReference : DocumentReference? = nil
-                            firestoreReference = self.db.collection("yemekler").addDocument(data: yemekKaydet, completion: { (error) in
+                            let database = Firestore.firestore()
+                            database.collection("yemekler").addDocument(data: yemekKaydet, completion: { (error) in
                                 if error != nil {
                                     self.makeAlert(titleInput: "Hata!", messageInput: error?.localizedDescription ?? "Hata!", button: "TAMAM")
                                 } else {

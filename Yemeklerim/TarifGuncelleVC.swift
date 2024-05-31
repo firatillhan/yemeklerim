@@ -3,7 +3,8 @@
 //  Yemeklerim
 //
 //  Created by Fırat İlhan on 23.05.2024.
-//
+
+//Not:  scrool view nesnesi eklenecek. 
 
 import UIKit
 import FirebaseAuth
@@ -27,7 +28,6 @@ class TarifGuncelleVC: UIViewController,UIImagePickerControllerDelegate, UINavig
     let db = Firestore.firestore()
     let storage = Storage.storage()
     
-    var selectedImage: UIImage?
     var gelenYemekId = String()
     var kullaniciEmail = String()
     var yemekId = String()
@@ -36,7 +36,6 @@ class TarifGuncelleVC: UIViewController,UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         yemekGuncelle(yemekId: gelenYemekId)
-        yemekAd.isEnabled = false
 
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.topItem?.title = "Tarif Güncelle"
