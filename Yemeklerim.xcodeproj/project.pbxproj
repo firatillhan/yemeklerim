@@ -23,7 +23,11 @@
 		3A09618D2BD8E65B000BE82A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618C2BD8E65B000BE82A /* Alert.swift */; };
 		3A09618F2BD8EE79000BE82A /* AnasayfaCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */; };
 		3A0961912BD93F74000BE82A /* TarifDefteriTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */; };
-		3AF548372D613A59009DB6E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AF548362D613A59009DB6E0 /* GoogleService-Info.plist */; };
+		3AF5483A2D613DA9009DB6E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF548392D613DA9009DB6E0 /* FirebaseAuth */; };
+		3AF5483C2D613DA9009DB6E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF5483B2D613DA9009DB6E0 /* FirebaseDatabase */; };
+		3AF5483E2D613DA9009DB6E0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF5483D2D613DA9009DB6E0 /* FirebaseFirestore */; };
+		3AF548402D613DA9009DB6E0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF5483F2D613DA9009DB6E0 /* FirebaseStorage */; };
+		3AF548432D613F6E009DB6E0 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF548422D613F6E009DB6E0 /* SDWebImage */; };
 		3AFA37CE2BDD515E00BD21E7 /* ProfilCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */; };
 		3AFA37D82BE16FDC00BD21E7 /* ProfilDuzenleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */; };
 		3AFB9B782BFF5F2E00F27259 /* TarifGuncelleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB9B772BFF5F2E00F27259 /* TarifGuncelleVC.swift */; };
@@ -49,7 +53,6 @@
 		3A09618C2BD8E65B000BE82A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3A09618E2BD8EE79000BE82A /* AnasayfaCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnasayfaCollectionVC.swift; sourceTree = "<group>"; };
 		3A0961902BD93F74000BE82A /* TarifDefteriTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifDefteriTableVC.swift; sourceTree = "<group>"; };
-		3AF548362D613A59009DB6E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFA37CD2BDD515E00BD21E7 /* ProfilCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilCollectionVC.swift; sourceTree = "<group>"; };
 		3AFA37D72BE16FDC00BD21E7 /* ProfilDuzenleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilDuzenleVC.swift; sourceTree = "<group>"; };
 		3AFB9B772BFF5F2E00F27259 /* TarifGuncelleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarifGuncelleVC.swift; sourceTree = "<group>"; };
@@ -61,6 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF5483C2D613DA9009DB6E0 /* FirebaseDatabase in Frameworks */,
+				3AF548402D613DA9009DB6E0 /* FirebaseStorage in Frameworks */,
+				3AF5483A2D613DA9009DB6E0 /* FirebaseAuth in Frameworks */,
+				3AF5483E2D613DA9009DB6E0 /* FirebaseFirestore in Frameworks */,
+				3AF548432D613F6E009DB6E0 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +101,6 @@
 				3A0961722BD8DDEF000BE82A /* KayitOlVC.swift */,
 				3A0961742BD8DE2C000BE82A /* AnasayfaVC.swift */,
 				3A0961762BD8DF05000BE82A /* TarifDefteriVC.swift */,
-				3AF548362D613A59009DB6E0 /* GoogleService-Info.plist */,
 				3A0961782BD8DF29000BE82A /* TarifYukleVC.swift */,
 				3A09617A2BD8DF6E000BE82A /* ProfilVC.swift */,
 				3A09617C2BD8DF9A000BE82A /* TarifDetayVC.swift */,
@@ -119,11 +126,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A09616F2BD846F8000BE82A /* Build configuration list for PBXNativeTarget "Yemeklerim" */;
 			buildPhases = (
-				94C6F43FB1C9906218AE574D /* [CP] Check Pods Manifest.lock */,
 				3A0961572BD846F6000BE82A /* Sources */,
 				3A0961582BD846F6000BE82A /* Frameworks */,
 				3A0961592BD846F6000BE82A /* Resources */,
-				0444104AE08095DD43CCB746 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,6 +163,10 @@
 				Base,
 			);
 			mainGroup = 3A0961522BD846F6000BE82A;
+			packageReferences = (
+				3AF548382D613DA9009DB6E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3AF548412D613F6E009DB6E0 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 3A09615C2BD846F6000BE82A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -173,55 +182,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A09616B2BD846F8000BE82A /* LaunchScreen.storyboard in Resources */,
-				3AF548372D613A59009DB6E0 /* GoogleService-Info.plist in Resources */,
 				3A0961682BD846F8000BE82A /* Assets.xcassets in Resources */,
 				3A0961662BD846F6000BE82A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0444104AE08095DD43CCB746 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yemeklerim/Pods-Yemeklerim-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94C6F43FB1C9906218AE574D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Yemeklerim-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A0961572BD846F6000BE82A /* Sources */ = {
@@ -469,6 +435,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3AF548382D613DA9009DB6E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
+		3AF548412D613F6E009DB6E0 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3AF548392D613DA9009DB6E0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF548382D613DA9009DB6E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3AF5483B2D613DA9009DB6E0 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF548382D613DA9009DB6E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		3AF5483D2D613DA9009DB6E0 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF548382D613DA9009DB6E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3AF5483F2D613DA9009DB6E0 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF548382D613DA9009DB6E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		3AF548422D613F6E009DB6E0 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF548412D613F6E009DB6E0 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3A0961532BD846F6000BE82A /* Project object */;
 }
